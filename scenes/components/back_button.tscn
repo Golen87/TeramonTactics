@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://rvpp31tnowv6"]
+
+[ext_resource type="Script" uid="uid://cnn4mctc60jur" path="res://scripts/back_button.gd" id="1_12e11"]
+[ext_resource type="Theme" uid="uid://fs8ra7ncelrb" path="res://resources/base_theme.tres" id="1_fkhth"]
+
+[node name="BackButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fkhth")
+script = ExtResource("1_12e11")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

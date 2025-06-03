@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwrrioew4x5j1"]
+
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://scenes/components/back_button.tscn" id="1_2mgfa"]
+
+[node name="MonsterTest" type="Node2D"]
+
+[node name="BackButton" parent="." instance=ExtResource("1_2mgfa")]
+offset_left = 50.0
+offset_top = 610.0
+offset_right = 50.0
+offset_bottom = 610.0

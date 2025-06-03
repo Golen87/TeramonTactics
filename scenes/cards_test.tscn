@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr0lqgpv2uje2"]
+
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://scenes/components/back_button.tscn" id="1_1x4mb"]
+
+[node name="CardsTest" type="Node2D"]
+
+[node name="BackButton" parent="." instance=ExtResource("1_1x4mb")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 52.0
+offset_top = 606.0
+offset_right = 52.0
+offset_bottom = 606.0
+grow_horizontal = 1
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4

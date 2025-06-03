@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://fs8ra7ncelrb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bupma"]
+bg_color = Color(0.721256, 0.429556, 0.112958, 1)
+
+[resource]
+default_font_size = 24
+MarginContainer/constants/margin_bottom = 64
+MarginContainer/constants/margin_left = 64
+MarginContainer/constants/margin_right = 64
+MarginContainer/constants/margin_top = 64
+Panel/styles/panel = SubResource("StyleBoxFlat_bupma")
+VBoxContainer/constants/separation = 16
