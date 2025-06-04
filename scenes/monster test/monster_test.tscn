@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwrrioew4x5j1"]
+
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_472bh"]
+[ext_resource type="PackedScene" uid="uid://cvr34bo5xs36n" path="res://components/Monster/Monster.tscn" id="2_6t3rr"]
+
+[node name="MonsterTest" type="Node2D"]
+
+[node name="Monster" parent="." instance=ExtResource("2_6t3rr")]
+position = Vector2(871, 221)
+
+[node name="Monster2" parent="." instance=ExtResource("2_6t3rr")]
+position = Vector2(644, 452)
+
+[node name="Monster3" parent="." instance=ExtResource("2_6t3rr")]
+position = Vector2(282, 275)
+
+[node name="BackButton" parent="." instance=ExtResource("1_472bh")]
+offset_left = 50.0
+offset_top = 610.0
+offset_right = 50.0
+offset_bottom = 610.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rvpp31tnowv6"]
 
-[ext_resource type="Script" uid="uid://cnn4mctc60jur" path="res://scripts/back_button.gd" id="1_12e11"]
-[ext_resource type="Theme" uid="uid://fs8ra7ncelrb" path="res://resources/base_theme.tres" id="1_fkhth"]
+[ext_resource type="Script" uid="uid://cnn4mctc60jur" path="res://components/Back button/BackButton.gd" id="1_12e11"]
+[ext_resource type="Theme" uid="uid://fs8ra7ncelrb" path="res://resources/ui_theme.tres" id="1_fkhth"]
 
 [node name="BackButton" type="Control"]
 layout_mode = 3

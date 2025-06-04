@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://xqfa36m0lheo"]
 
-[ext_resource type="Theme" uid="uid://fs8ra7ncelrb" path="res://resources/base_theme.tres" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://cm4wa0eqwexhk" path="res://scripts/main_menu.gd" id="2_ekxnf"]
+[ext_resource type="Theme" uid="uid://fs8ra7ncelrb" path="res://resources/ui_theme.tres" id="1_qale4"]
+[ext_resource type="Script" uid="uid://cm4wa0eqwexhk" path="res://scenes/main menu/main_menu.gd" id="2_c8ghj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,8 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_l6cm7")
-script = ExtResource("2_ekxnf")
+theme = ExtResource("1_qale4")
+script = ExtResource("2_c8ghj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

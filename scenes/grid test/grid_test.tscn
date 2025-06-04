@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy2c4pedun72s"]
+
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_lafj0"]
+[ext_resource type="PackedScene" uid="uid://bs8geclyiywic" path="res://components/Grid/Grid.tscn" id="2_a8xor"]
+
+[node name="GridTest" type="Node2D"]
+
+[node name="Grid" parent="." instance=ExtResource("2_a8xor")]
+position = Vector2(297, 215)
+
+[node name="Grid2" parent="." instance=ExtResource("2_a8xor")]
+position = Vector2(724, 324)
+
+[node name="BackButton" parent="." instance=ExtResource("1_lafj0")]
+offset_left = 46.0
+offset_top = 613.0
+offset_right = 46.0
+offset_bottom = 613.0
