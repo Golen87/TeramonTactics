@@ -5,22 +5,17 @@
 
 [node name="CardsTest" type="Node2D"]
 
-[node name="Card" parent="." instance=ExtResource("1_okqvj")]
-position = Vector2(279, 246)
+[node name="Card1" parent="." instance=ExtResource("1_okqvj")]
+position = Vector2(201, 199)
 scale = Vector2(0.75, 0.75)
 title = "Apple"
 
 [node name="Card2" parent="." instance=ExtResource("1_okqvj")]
-position = Vector2(554, 374)
+position = Vector2(455, 255)
 scale = Vector2(0.75, 0.75)
 title = "Banana"
 description = "Some different text"
-
-[node name="Card3" parent="." instance=ExtResource("1_okqvj")]
-position = Vector2(822, 198)
-scale = Vector2(0.75, 0.75)
-title = "Orange"
-description = "Damn, that's crazy"
+face_up = false
 
 [node name="BackButton" parent="." instance=ExtResource("1_bvw6o")]
 anchors_preset = 2
@@ -34,3 +29,29 @@ grow_horizontal = 1
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="CardHand" type="Node2D" parent="."]
+position = Vector2(880, 545)
+scale = Vector2(0.75, 0.75)
+
+[node name="HeldCard1" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(-165.333, -68)
+rotation = -0.261799
+scale = Vector2(0.75, 0.75)
+title = "Kiwi"
+description = "Text"
+
+[node name="HeldCard2" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(1.33333, -114.667)
+scale = Vector2(0.75, 0.75)
+title = "Peach"
+description = "Text"
+cost = "2"
+
+[node name="HeldCard3" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(177.333, -85.3333)
+rotation = 0.261799
+scale = Vector2(0.75, 0.75)
+title = "Orange"
+description = "Text"
+cost = "3"
