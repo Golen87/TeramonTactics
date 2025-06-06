@@ -1,21 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr0lqgpv2uje2"]
+[gd_scene load_steps=5 format=3 uid="uid://dr0lqgpv2uje2"]
 
 [ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_bvw6o"]
 [ext_resource type="PackedScene" uid="uid://2l4k5j7qc47v" path="res://components/Card/Card.tscn" id="1_okqvj"]
+[ext_resource type="Resource" uid="uid://c8sld5nwvhxq6" path="res://resources/cards/first_card.tres" id="2_iuvyw"]
+[ext_resource type="Resource" uid="uid://dh0sk62mvjjxt" path="res://resources/cards/second_card.tres" id="4_cpn34"]
 
 [node name="CardsTest" type="Node2D"]
 
 [node name="Card1" parent="." instance=ExtResource("1_okqvj")]
 position = Vector2(201, 199)
 scale = Vector2(0.75, 0.75)
-title = "Apple"
+card_definition = ExtResource("2_iuvyw")
 
 [node name="Card2" parent="." instance=ExtResource("1_okqvj")]
 position = Vector2(455, 255)
 scale = Vector2(0.75, 0.75)
-title = "Banana"
-description = "Some different text"
 face_up = false
+card_definition = ExtResource("4_cpn34")
 
 [node name="BackButton" parent="." instance=ExtResource("1_bvw6o")]
 anchors_preset = 2
@@ -35,23 +36,18 @@ position = Vector2(880, 545)
 scale = Vector2(0.75, 0.75)
 
 [node name="HeldCard1" parent="CardHand" instance=ExtResource("1_okqvj")]
-position = Vector2(-165.333, -68)
+position = Vector2(-180, -70.6667)
 rotation = -0.261799
 scale = Vector2(0.75, 0.75)
-title = "Kiwi"
-description = "Text"
+card_definition = ExtResource("4_cpn34")
 
 [node name="HeldCard2" parent="CardHand" instance=ExtResource("1_okqvj")]
 position = Vector2(1.33333, -114.667)
 scale = Vector2(0.75, 0.75)
-title = "Peach"
-description = "Text"
-cost = "2"
+card_definition = ExtResource("2_iuvyw")
 
 [node name="HeldCard3" parent="CardHand" instance=ExtResource("1_okqvj")]
-position = Vector2(177.333, -85.3333)
+position = Vector2(188, -77.3333)
 rotation = 0.261799
 scale = Vector2(0.75, 0.75)
-title = "Orange"
-description = "Text"
-cost = "3"
+card_definition = ExtResource("4_cpn34")

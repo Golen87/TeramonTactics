@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://2l4k5j7qc47v"]
 
-[ext_resource type="Theme" uid="uid://dyjxxuidige6x" path="res://resources/card_theme.tres" id="1_7vkkc"]
+[ext_resource type="Theme" uid="uid://dyjxxuidige6x" path="res://resources/themes/card_theme.tres" id="1_7vkkc"]
 [ext_resource type="Script" uid="uid://dhiydrjm8gxld" path="res://components/Card/Card.gd" id="1_ojsuk"]
 [ext_resource type="Texture2D" uid="uid://bfkmoktygl0yh" path="res://assets/images/card_front.png" id="2_ojsuk"]
 [ext_resource type="Texture2D" uid="uid://df12lw8elt430" path="res://assets/images/card_back.png" id="2_rdgjo"]
-[ext_resource type="Texture2D" uid="uid://cwolg3o3xxme3" path="res://assets/images/placeholder.png" id="3_rdgjo"]
+[ext_resource type="Texture2D" uid="uid://cwolg3o3xxme3" path="res://assets/images/placeholder1.png" id="3_rdgjo"]
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_ojsuk")
@@ -56,6 +56,7 @@ offset_right = -20.0
 grow_horizontal = 2
 
 [node name="CardImage" type="TextureRect" parent="CardFront/ImageContainer"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +89,7 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 42.0
 grow_horizontal = 2
-text = "Card Title"
+text = "<missing>"
 horizontal_alignment = 1
 
 [node name="CardDescription" type="RichTextLabel" parent="CardFront/TextPanel"]
@@ -103,7 +104,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Effect text here"
+text = "<missing>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,7 +130,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "1"
+text = "-1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
