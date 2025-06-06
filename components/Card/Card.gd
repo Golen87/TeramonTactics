@@ -25,7 +25,6 @@ extends Node2D
 
 func _on_card_changed():
 	if card_definition:
-		print(card_definition)
 		card_image.texture = card_definition.image
 		card_title.text = card_definition.name
 		card_description.text = card_definition.description

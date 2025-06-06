@@ -18,10 +18,10 @@ extends Resource
 		emit_changed()
 
 ## Monster sprite
-@export var art: Texture2D:
-	get: return art
+@export var image: Texture2D:
+	get: return image
 	set(value):
-		art = value
+		image = value
 		emit_changed()
 
 ## Monster type

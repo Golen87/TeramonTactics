@@ -1,3 +1,15 @@
-[gd_resource type="Resource" format=3 uid="uid://b7w7bwm41si2u"]
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=3 format=3 uid="uid://b7w7bwm41si2u"]
+
+[ext_resource type="Texture2D" uid="uid://cwolg3o3xxme3" path="res://assets/images/monsters/placeholder1.png" id="1_ff04p"]
+[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_resource.gd" id="1_tp2gp"]
 
 [resource]
+script = ExtResource("1_tp2gp")
+name = "Fire Monster"
+description = "Example monster text"
+image = ExtResource("1_ff04p")
+type = 0
+health = 3
+attack = 5
+action_points = 3
+frency = 0
