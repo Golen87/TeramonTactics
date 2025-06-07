@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://ke4ubpc86oth"]
+
+[ext_resource type="Texture2D" uid="uid://b7u85fpqte5dr" path="res://assets/images/types/darkness.png" id="1_embid"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="2_4vrau"]
+
+[resource]
+script = ExtResource("2_4vrau")
+name = "Darkness"
+description = "Darkness decreases all effects by 1(colored text, e.g. 'apply 2 Blaze')"
+image = ExtResource("1_embid")
+color = Color(0.345098, 0.341176, 0.380392, 1)
+metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbk02qiy5fu6"
-path="res://.godot/imported/bolt.png-b4b30077e23597f056558f5c93d8c184.ctex"
+uid="uid://db03dk7e111no"
+path="res://.godot/imported/surge.png-35876700784ef883d3bcc4127c1bf2b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/types/bolt.png"
-dest_files=["res://.godot/imported/bolt.png-b4b30077e23597f056558f5c93d8c184.ctex"]
+source_file="res://assets/images/types/surge.png"
+dest_files=["res://.godot/imported/surge.png-35876700784ef883d3bcc4127c1bf2b0.ctex"]
 
 [params]
 

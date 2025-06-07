@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dqpu1mxrs3344" path="res://components/Monster/Monster.gd" id="1_2lxqh"]
 
 [node name="Monster" type="Node2D"]
-rotation = 393.702
 script = ExtResource("1_2lxqh")
 
 [node name="ImageContainer" type="Control" parent="."]

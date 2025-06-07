@@ -11,17 +11,14 @@
 
 [node name="Monster1" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(1000, 216)
-rotation = 0.0
 monster_definition = ExtResource("2_djxob")
 
 [node name="Monster2" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(864, 464)
-rotation = 0.0
 monster_definition = ExtResource("3_0jqhj")
 
 [node name="Monster3" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(640, 304)
-rotation = 0.0
 monster_definition = ExtResource("4_ymlnh")
 
 [node name="MonsterPanel1" parent="." instance=ExtResource("5_0jqhj")]

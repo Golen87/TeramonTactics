@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=3 format=3 uid="uid://cgujytr7nyt1l"]
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=5 format=3 uid="uid://cgujytr7nyt1l"]
 
 [ext_resource type="Texture2D" uid="uid://cnho40lfvue8i" path="res://assets/images/monsters/placeholder2.png" id="1_bym2w"]
-[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_resource.gd" id="1_lj67k"]
+[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_definition.gd" id="2_s8blg"]
+[ext_resource type="Resource" uid="uid://bitjw0ny8vdcx" path="res://resources/types/tide.tres" id="3_yxl42"]
+[ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/types/surge.tres" id="4_f7545"]
 
 [resource]
-script = ExtResource("1_lj67k")
+script = ExtResource("2_s8blg")
 name = "Water Monster"
 description = "What a handsome little lad"
 image = ExtResource("1_bym2w")
-type = 2
+type1 = ExtResource("3_yxl42")
+type2 = ExtResource("4_f7545")
 health = 6
 attack = 1
 action_points = 4
 frency = 2
+speed = 2

@@ -15,10 +15,12 @@ extends Node
 
 
 @onready var monster_image: TextureRect = $MonsterImage
-@onready var monster_type: TextureRect = $MonsterType
+@onready var monster_type_1: TextureRect = $MonsterType1
+@onready var monster_type_2: TextureRect = $MonsterType2
 @onready var monster_name: Label = $MonsterName
 @onready var health_label: Label = $HealthLabel
 @onready var attack_label: Label = $AttackLabel
+@onready var speed_label: Label = $FrenzyLabel
 @onready var action_label: Label = $ActionLabel
 @onready var frenzy_label: Label = $FrenzyLabel
 @onready var attack_effect_label: Label = $AttackEffectLabel
@@ -29,11 +31,21 @@ extends Node
 func _on_monster_changed():
 	if monster_definition:
 		monster_image.texture = monster_definition.image
-		#monster_type.texture = monster_definition.type
 		monster_name.text = monster_definition.name
 		health_label.text = str(monster_definition.health)
 		attack_label.text = str(monster_definition.attack)
+		speed_label.text = str(monster_definition.speed)
 		action_label.text = str(monster_definition.action_points)
 		frenzy_label.text = str(monster_definition.frency)
 		attack_effect_label.text = monster_definition.description
 		ally_effect_label.text = monster_definition.description
+
+		monster_type_1.visible = false
+		if monster_definition.type1:
+			monster_type_1.visible = true
+			monster_type_1.texture = monster_definition.type1.image
+
+		monster_type_2.visible = false
+		if monster_definition.type2:
+			monster_type_2.visible = true
+			monster_type_2.texture = monster_definition.type2.image
