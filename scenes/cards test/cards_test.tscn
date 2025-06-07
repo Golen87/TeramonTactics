@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_bvw6o"]
 [ext_resource type="PackedScene" uid="uid://2l4k5j7qc47v" path="res://components/Card/Card.tscn" id="1_okqvj"]
-[ext_resource type="Resource" uid="uid://c8sld5nwvhxq6" path="res://resources/cards/first_card.tres" id="2_keqt4"]
+[ext_resource type="Resource" uid="uid://c8sld5nwvhxq6" path="res://resources/cards/card_bread.tres" id="2_keqt4"]
 [ext_resource type="Resource" uid="uid://dh0sk62mvjjxt" path="res://resources/cards/second_card.tres" id="3_vxlbu"]
 [ext_resource type="Resource" uid="uid://chxvqcx7ask43" path="res://resources/cards/third_card.tres" id="5_vy4c3"]
 
@@ -14,7 +14,7 @@ scale = Vector2(0.75, 0.75)
 card_definition = ExtResource("2_keqt4")
 
 [node name="Card2" parent="." instance=ExtResource("1_okqvj")]
-position = Vector2(455, 255)
+position = Vector2(476, 258)
 scale = Vector2(0.75, 0.75)
 face_up = false
 card_definition = ExtResource("3_vxlbu")

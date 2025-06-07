@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MonsterDefinition" load_steps=2 format=3 uid="uid://d2qyd8f12kybw"]
 
-[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_resource.gd" id="1_7fov8"]
+[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_definition.gd" id="1_7fov8"]
 
 [resource]
 script = ExtResource("1_7fov8")
