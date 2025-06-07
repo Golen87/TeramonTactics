@@ -13,5 +13,5 @@ type1 = ExtResource("3_gj84p")
 health = 3
 attack = 5
 action_points = 3
-frency = 0
+frency = 1
 speed = 4
