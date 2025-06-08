@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://dvhfcqustuy6c"]
+
+[ext_resource type="Texture2D" uid="uid://bymxepdl2x6lg" path="res://assets/images/types/veil.png" id="1_7ydw7"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="2_0s7d7"]
+
+[resource]
+script = ExtResource("2_0s7d7")
+name = "Veil"
+description = "Stacks of Veil negate entire instances of damage, then tick down."
+image = ExtResource("1_7ydw7")
+color = Color(0.929412, 0.572549, 0.890196, 1)
+metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bin7y284eppfp"]
+
+[ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="1_ih3qi"]
+
+[node name="EffectToken" type="TextureRect"]
+custom_minimum_size = Vector2(24, 24)
+texture = ExtResource("1_ih3qi")
+expand_mode = 2

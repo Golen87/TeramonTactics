@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardDefinition" load_steps=3 format=3 uid="uid://c8sld5nwvhxq6"]
+
+[ext_resource type="Texture2D" uid="uid://cwcmoy6simygm" path="res://assets/images/cards/bread.png" id="1_v6wmc"]
+[ext_resource type="Script" uid="uid://boaf36r134fs5" path="res://resources/cards/card_definition.gd" id="1_wkfdo"]
+
+[resource]
+script = ExtResource("1_wkfdo")
+name = "Sliced Bread"
+description = "Lorem ipsum dolar sit amet."
+image = ExtResource("1_v6wmc")
+cost = 1

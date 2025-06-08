@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardDefinition" load_steps=3 format=3 uid="uid://chxvqcx7ask43"]
+
+[ext_resource type="Texture2D" uid="uid://dso2apm0akpnl" path="res://assets/images/cards/drink.png" id="1_kppje"]
+[ext_resource type="Script" uid="uid://boaf36r134fs5" path="res://resources/cards/card_definition.gd" id="2_4faop"]
+
+[resource]
+script = ExtResource("2_4faop")
+name = "Suspicious Drink"
+description = "He do be sittin tho look at that lil dude holy shit"
+image = ExtResource("1_kppje")
+cost = 3

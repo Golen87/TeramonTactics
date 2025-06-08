@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr0lqgpv2uje2"]
+
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_bvw6o"]
+[ext_resource type="PackedScene" uid="uid://2l4k5j7qc47v" path="res://components/Card/Card.tscn" id="1_okqvj"]
+[ext_resource type="Resource" uid="uid://c8sld5nwvhxq6" path="res://resources/cards/card_bread.tres" id="2_keqt4"]
+[ext_resource type="Resource" uid="uid://dh0sk62mvjjxt" path="res://resources/cards/second_card.tres" id="3_vxlbu"]
+[ext_resource type="Resource" uid="uid://chxvqcx7ask43" path="res://resources/cards/third_card.tres" id="5_vy4c3"]
+
+[node name="CardsTest" type="Node2D"]
+
+[node name="Card1" parent="." instance=ExtResource("1_okqvj")]
+position = Vector2(201, 199)
+scale = Vector2(0.75, 0.75)
+card_definition = ExtResource("2_keqt4")
+
+[node name="Card2" parent="." instance=ExtResource("1_okqvj")]
+position = Vector2(476, 258)
+scale = Vector2(0.75, 0.75)
+face_up = false
+card_definition = ExtResource("3_vxlbu")
+
+[node name="BackButton" parent="." instance=ExtResource("1_bvw6o")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 52.0
+offset_top = 606.0
+offset_right = 52.0
+offset_bottom = 606.0
+grow_horizontal = 1
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardHand" type="Node2D" parent="."]
+position = Vector2(880, 545)
+scale = Vector2(0.75, 0.75)
+
+[node name="HeldCard1" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(-180, -70.6667)
+rotation = -0.261799
+scale = Vector2(0.75, 0.75)
+card_definition = ExtResource("2_keqt4")
+
+[node name="HeldCard2" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(1.33333, -114.667)
+scale = Vector2(0.75, 0.75)
+card_definition = ExtResource("3_vxlbu")
+
+[node name="HeldCard3" parent="CardHand" instance=ExtResource("1_okqvj")]
+position = Vector2(188, -77.3333)
+rotation = 0.261799
+scale = Vector2(0.75, 0.75)
+card_definition = ExtResource("5_vy4c3")
