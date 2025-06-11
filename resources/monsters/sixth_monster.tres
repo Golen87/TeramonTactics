@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=4 format=3 uid="uid://dug1jbvhrscfu"]
+
+[ext_resource type="Texture2D" uid="uid://wc1lehm1losp" path="res://assets/images/monsters/placeholder6.png" id="1_vfba2"]
+[ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_definition.gd" id="2_sqhwa"]
+[ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/types/surge.tres" id="3_5bssf"]
+
+[resource]
+script = ExtResource("2_sqhwa")
+name = "Grass Monster"
+description = "Funny description here"
+image = ExtResource("1_vfba2")
+type1 = ExtResource("3_5bssf")
+health = 10
+attack = 1
+action_points = 3
+frency = 2
+speed = 4

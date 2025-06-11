@@ -13,3 +13,6 @@ class_name TypeDefinition
 
 ## Type color
 @export var color: Color
+
+## Type buff or debuff
+@export_enum("Buff", "Debuff") var is_buff: int

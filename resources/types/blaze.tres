@@ -9,4 +9,5 @@ name = "Blaze"
 description = "Stacks of Blaze on a unit are added to its attack power, clears after triggering."
 image = ExtResource("1_634a7")
 color = Color(0.980392, 0.647059, 0.333333, 1)
+is_buff = 0
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

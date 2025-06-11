@@ -9,4 +9,5 @@ name = "Freeze"
 description = "Stacks of Freeze increase the unit's attack timer and disable reactions.Consumed instead of attack timer."
 image = ExtResource("1_fqo4y")
 color = Color(0.47451, 0.815686, 0.756863, 1)
+is_buff = 1
 metadata/_custom_type_script = "uid://caek4h8ojig5g"
