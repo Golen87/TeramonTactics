@@ -1,5 +1,7 @@
 @tool
 extends Node2D
+class_name Card
+
 
 @export var face_up: bool = true
 @export var card_definition: CardDefinition:

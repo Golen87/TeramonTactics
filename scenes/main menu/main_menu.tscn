@@ -33,18 +33,23 @@ layout_mode = 2
 text = "Random test scenes"
 horizontal_alignment = 1
 
-[node name="Grid" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Grid test"
-
-[node name="Monster" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Monster"
-
 [node name="Cards" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cards"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Grid" to="." method="_on_grid_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Monster" to="." method="_on_monster_pressed"]
+[node name="Monsters" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Monsters"
+
+[node name="Attacks" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attacks"
+
+[node name="Grid" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grid"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Cards" to="." method="_on_cards_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Monsters" to="." method="_on_monster_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Attacks" to="." method="_on_attacks_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Grid" to="." method="_on_grid_pressed"]
