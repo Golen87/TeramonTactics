@@ -40,42 +40,56 @@ var attack: int = 0:
 		attack = value
 		attack_label.text = str(attack)
 
-@export var stacked_effects: Array[TypeDefinition]:
-	set(value):
-		stacked_effects = value
-		_on_stacked_effects_update()
-
-func add_stack_effect(effect: TypeDefinition):
-	stacked_effects.append(effect)
-	_on_stacked_effects_update()
-
-func remove_stack_effect(index: int):
-	stacked_effects.pop_at(index)
-	_on_stacked_effects_update()
-
 const effect_token = preload("res://components/EffectToken/EffectToken.tscn")
 
-func _on_stacked_effects_update():
+
+# Monsters would never normally spawn with tokens, so this is purely used during testing
+@export var debug_stacked_effects: Array[TypeDefinition]:
+	set(value):
+		debug_stacked_effects = value
+		if Engine.is_editor_hint():
+			_on_debug_stacked_effects_update()
+func _on_debug_stacked_effects_update():
 	if not effect_stack_container:
 		return
 	for child in effect_stack_container.get_children():
+		effect_stack_container.remove_child(child)
 		child.queue_free()
-	for effect in stacked_effects:
-		var token = effect_token.instantiate()
-		if effect:
-			token.texture = effect.image
-		effect_stack_container.add_child(token)
-	if len(stacked_effects) > 1:
-		var separation = (112 - 24 * len(stacked_effects)) / (len(stacked_effects) - 1)
+	for type in debug_stacked_effects:
+		if type:
+			var token = effect_token.instantiate()
+			token.type = type
+			effect_stack_container.add_child(token)
+	_rearrange_tokens()
+
+
+# --- Effect tokens --- #
+
+func add_stack_effect(type: TypeDefinition):
+	var token = effect_token.instantiate()
+	token.type = type
+	effect_stack_container.add_child(token)
+	_rearrange_tokens()
+
+#func remove_stack_effect(index: int):
+	#stacked_effects.pop_at(index)
+	#_rearrange_tokens()
+
+
+func _rearrange_tokens():
+	var tokens = effect_stack_container.get_children()
+	if len(tokens) > 1:
+		var separation = (112 - 24 * len(tokens)) / (len(tokens) - 1)
 		separation = min(separation, 8)
 		effect_stack_container.add_theme_constant_override(&"separation", separation)
 
 
 func _ready() -> void:
-	health = monster_definition.health
-	attack = monster_definition.attack
+	if monster_definition:
+		health = monster_definition.health
+		attack = monster_definition.attack
 
-	_on_stacked_effects_update()
+	_on_debug_stacked_effects_update()
 
 	#drag_button.pressed.connect(_on_drag_pressed)
 

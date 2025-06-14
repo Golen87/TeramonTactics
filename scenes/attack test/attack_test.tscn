@@ -31,8 +31,8 @@ script = ExtResource("16_hl42r")
 monsters = [NodePath("../Monster1"), NodePath("../Monster2"), NodePath("../Monster3"), NodePath("../Monster4"), NodePath("../Monster5"), NodePath("../Monster6")]
 
 [node name="Line2D" type="Line2D" parent="ArrowDrawer"]
-position = Vector2(8, 0)
-points = PackedVector2Array(440, 384, 568, 256, 760, 384)
+position = Vector2(8, 16)
+points = PackedVector2Array(440, 336, 568, 256, 696, 328)
 width = 50.0
 width_curve = SubResource("Curve_vyoyv")
 texture = ExtResource("16_vyoyv")
@@ -45,32 +45,32 @@ round_precision = 12
 [node name="Monster1" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(416, 88)
 monster_definition = ExtResource("3_qt2kh")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("5_dlwvi"), ExtResource("5_dlwvi"), ExtResource("5_dlwvi")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("5_dlwvi"), ExtResource("5_dlwvi")])
 
 [node name="Monster2" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(192, 288)
 monster_definition = ExtResource("6_njngx")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a")])
 
 [node name="Monster3" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(416, 488)
 monster_definition = ExtResource("7_cvtn4")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("6_86cjg"), ExtResource("6_86cjg"), ExtResource("6_86cjg"), ExtResource("6_86cjg")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("7_b3xx5"), ExtResource("7_b3xx5"), ExtResource("7_b3xx5")])
 
 [node name="Monster4" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(736, 88)
 monster_definition = ExtResource("7_pn4aa")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("7_b3xx5"), ExtResource("7_b3xx5"), ExtResource("7_b3xx5")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua")])
 
 [node name="Monster5" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(960, 288)
 monster_definition = ExtResource("11_mslqh")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("6_86cjg"), ExtResource("6_86cjg"), ExtResource("6_86cjg")])
 
 [node name="Monster6" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(736, 488)
 monster_definition = ExtResource("13_vxo5f")
-stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("15_fjj0g"), ExtResource("15_fjj0g"), ExtResource("15_fjj0g")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("15_fjj0g"), ExtResource("15_fjj0g")])
 
 [node name="Explanation" type="Label" parent="."]
 offset_right = 337.0

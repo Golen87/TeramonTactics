@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MonsterDefinition" load_steps=4 format=3 uid="uid://barjkyg7ancqv"]
 
-[ext_resource type="Texture2D" uid="uid://bowtvygu6ywwf" path="res://assets/images/monsters/placeholder4.png" id="1_6wlfq"]
+[ext_resource type="Texture2D" uid="uid://gk62llxvqgh7" path="res://assets/images/monsters/placeholder5.png" id="1_6wlfq"]
 [ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_definition.gd" id="2_e8xnb"]
 [ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/types/surge.tres" id="3_u60lx"]
 
