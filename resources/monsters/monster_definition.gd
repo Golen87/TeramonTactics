@@ -24,18 +24,18 @@ extends Resource
 		image = value
 		emit_changed()
 
-## Monster primary type
-@export var type1: TypeDefinition:
-	get: return type1
+## Monster primary element
+@export var element1: ElementDefinition:
+	get: return element1
 	set(value):
-		type1 = value
+		element1 = value
 		emit_changed()
 
-## Monster secondary type
-@export var type2: TypeDefinition:
-	get: return type2
+## Monster secondary element
+@export var element2: ElementDefinition:
+	get: return element2
 	set(value):
-		type2 = value
+		element2 = value
 		emit_changed()
 
 # Monster health points

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://bitjw0ny8vdcx"]
 
 [ext_resource type="Texture2D" uid="uid://o2f4j87yvpsc" path="res://assets/images/types/tide.png" id="1_37aom"]
-[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="2_klrcf"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_klrcf"]
 
 [resource]
 script = ExtResource("2_klrcf")

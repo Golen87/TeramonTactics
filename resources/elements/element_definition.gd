@@ -1,18 +1,18 @@
 extends Resource
-class_name TypeDefinition
+class_name ElementDefinition
 
 
-## Type name
+## Element name
 @export var name: String
 
-## Type descriptive text
+## Element descriptive text
 @export var description: String
 
-## Type sprite
+## Element sprite
 @export var image: Texture2D
 
-## Type color
+## Element color
 @export var color: Color
 
-## Type buff or debuff
+## Element buff or debuff
 @export_enum("Buff", "Debuff") var is_buff: int

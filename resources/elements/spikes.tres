@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://bnllfcphxpwb"]
 
 [ext_resource type="Texture2D" uid="uid://cfcluv4i72lhv" path="res://assets/images/types/spikes.png" id="1_n10l2"]
-[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="2_tp883"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_tp883"]
 
 [resource]
 script = ExtResource("2_tp883")

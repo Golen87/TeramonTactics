@@ -2,11 +2,11 @@
 extends TextureRect
 class_name EffectToken
 
-@export var type: TypeDefinition:
+@export var element: ElementDefinition:
 	set(value):
-		type = value
-		if type:
-			texture = type.image
+		element = value
+		if element:
+			texture = element.image
 
 @export var used := false:
 	set(value):
@@ -15,4 +15,4 @@ class_name EffectToken
 
 
 func _ready() -> void:
-	texture = type.image
+	texture = element.image

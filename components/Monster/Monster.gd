@@ -44,7 +44,7 @@ const effect_token = preload("res://components/EffectToken/EffectToken.tscn")
 
 
 # Monsters would never normally spawn with tokens, so this is purely used during testing
-@export var debug_stacked_effects: Array[TypeDefinition]:
+@export var debug_stacked_effects: Array[ElementDefinition]:
 	set(value):
 		debug_stacked_effects = value
 		if Engine.is_editor_hint():
@@ -55,19 +55,19 @@ func _on_debug_stacked_effects_update():
 	for child in effect_stack.get_children():
 		effect_stack.remove_child(child)
 		child.queue_free()
-	for type in debug_stacked_effects:
-		if type:
+	for element in debug_stacked_effects:
+		if element:
 			var token = effect_token.instantiate()
-			token.type = type
+			token.element = element
 			effect_stack.add_child(token)
 	_rearrange_tokens()
 
 
 # --- Effect tokens --- #
 
-func add_stack_effect(type: TypeDefinition):
+func add_stack_effect(element: ElementDefinition):
 	var token = effect_token.instantiate()
-	token.type = type
+	token.element = element
 	effect_stack.add_child(token)
 	_rearrange_tokens()
 

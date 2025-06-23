@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://dnj6ayac8vdxi"]
 
 [ext_resource type="Texture2D" uid="uid://d3wh5gof2gfoi" path="res://assets/images/types/freeze.png" id="1_fqo4y"]
-[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="2_csupr"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_csupr"]
 
 [resource]
 script = ExtResource("2_csupr")

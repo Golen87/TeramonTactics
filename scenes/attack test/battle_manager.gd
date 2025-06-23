@@ -7,7 +7,7 @@ func _ready():
 	arrow_drawer.queue_attack.connect(_on_attack)
 
 
-const blaze = preload("res://resources/types/blaze.tres")
+const blaze = preload("res://resources/elements/blaze.tres")
 
 func _on_attack(attacker: Monster, defender: Monster):
 	var damage: int = attacker.attack
@@ -15,7 +15,7 @@ func _on_attack(attacker: Monster, defender: Monster):
 	for effect in attacker.get_effect_stack():
 		if effect.used:
 			continue
-		if effect.type == blaze:
+		if effect.element == blaze:
 			damage += 1
 			effect.used = true
 
