@@ -6,7 +6,7 @@ class_name Monster
 @onready var monster_image: TextureRect = %MonsterImage
 @onready var health_label: Label = %HealthLabel
 @onready var attack_label: Label = %AttackLabel
-@onready var effect_stack_container: HBoxContainer = %EffectStack
+@onready var effect_stack: HBoxContainer = %EffectStack
 
 signal drag_started(monster: Monster)
 signal drag_ended(monster: Monster)
@@ -50,16 +50,16 @@ const effect_token = preload("res://components/EffectToken/EffectToken.tscn")
 		if Engine.is_editor_hint():
 			_on_debug_stacked_effects_update()
 func _on_debug_stacked_effects_update():
-	if not effect_stack_container:
+	if not effect_stack:
 		return
-	for child in effect_stack_container.get_children():
-		effect_stack_container.remove_child(child)
+	for child in effect_stack.get_children():
+		effect_stack.remove_child(child)
 		child.queue_free()
 	for type in debug_stacked_effects:
 		if type:
 			var token = effect_token.instantiate()
 			token.type = type
-			effect_stack_container.add_child(token)
+			effect_stack.add_child(token)
 	_rearrange_tokens()
 
 
@@ -68,7 +68,7 @@ func _on_debug_stacked_effects_update():
 func add_stack_effect(type: TypeDefinition):
 	var token = effect_token.instantiate()
 	token.type = type
-	effect_stack_container.add_child(token)
+	effect_stack.add_child(token)
 	_rearrange_tokens()
 
 #func remove_stack_effect(index: int):
@@ -76,12 +76,19 @@ func add_stack_effect(type: TypeDefinition):
 	#_rearrange_tokens()
 
 
+func get_effect_stack() -> Array[EffectToken]:
+	var tokens: Array[EffectToken] = []
+	for child in effect_stack.get_children():
+		if child is EffectToken:
+			tokens.append(child)
+	return tokens
+
 func _rearrange_tokens():
-	var tokens = effect_stack_container.get_children()
-	if len(tokens) > 1:
-		var separation = (112 - 24 * len(tokens)) / (len(tokens) - 1)
+	var token_count := len(get_effect_stack())
+	if token_count > 1:
+		var separation := (112 - 24 * token_count) / (token_count - 1)
 		separation = min(separation, 8)
-		effect_stack_container.add_theme_constant_override(&"separation", separation)
+		effect_stack.add_theme_constant_override(&"separation", separation)
 
 
 func _ready() -> void:

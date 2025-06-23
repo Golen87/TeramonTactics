@@ -1,7 +1,6 @@
 extends Node2D
 
 signal queue_attack(attacker: Monster, defender: Monster)
-@export var monsters: Array[Monster]
 @onready var line: Line2D = $Line2D
 
 var source_monster: Node = null
@@ -9,8 +8,11 @@ var target_monster: Node = null
 var dragging := false
 var mouse_pos := Vector2.ZERO
 
+var monsters: Array[Monster]
+
 
 func _ready():
+	monsters.assign(get_tree().get_nodes_in_group(&"monster"))
 	for monster in monsters:
 		monster.drag_started.connect(_on_drag_start)
 		monster.drag_ended.connect(_on_drag_stop)
@@ -21,7 +23,7 @@ func _on_drag_start(monster: Monster):
 	dragging = true
 
 
-func _process(delta):
+func _process(_delta: float):
 	if dragging:
 		# Snap to a target if hovering
 		target_monster = null
@@ -36,7 +38,7 @@ func _process(delta):
 		_draw()
 
 
-func _on_drag_stop(monster: Monster):
+func _on_drag_stop(_monster: Monster):
 	mouse_pos = get_global_mouse_position()
 
 	if dragging:

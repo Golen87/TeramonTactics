@@ -15,6 +15,10 @@ run/main_scene="uid://xqfa36m0lheo"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+monster="Monster instance on the game board"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
