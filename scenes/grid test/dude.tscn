@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgr8ftkvsnlsb"]
+
+[ext_resource type="Texture2D" uid="uid://dbyycaqaeiaen" path="res://assets/images/grid/dude.png" id="1_jqqty"]
+[ext_resource type="Script" uid="uid://bypmf2rybsrqb" path="res://scenes/grid test/dude.gd" id="1_nj1n1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1tc"]
+atlas = ExtResource("1_jqqty")
+
+[node name="Dude" type="Node2D"]
+script = ExtResource("1_nj1n1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_lk1tc")
+hframes = 3
+vframes = 2
