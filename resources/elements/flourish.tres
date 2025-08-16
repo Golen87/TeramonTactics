@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://lw8vcol4w3wi"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://lw8vcol4w3wi"]
 
 [ext_resource type="Texture2D" uid="uid://bqoiwpwodqoc5" path="res://assets/images/types/flourish.png" id="1_kqowa"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_rmj5q"]
 
 [resource]
 script = ExtResource("2_rmj5q")
+type = 4
 name = "Flourish"
 description = "Stacks of Flourish heal units, ticks down after each turn."
 image = ExtResource("1_kqowa")
 color = Color(0.388235, 0.733333, 0.368627, 1)
+is_buff = 0
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://bnllfcphxpwb"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://bnllfcphxpwb"]
 
 [ext_resource type="Texture2D" uid="uid://cfcluv4i72lhv" path="res://assets/images/types/spikes.png" id="1_n10l2"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_tp883"]
 
 [resource]
 script = ExtResource("2_tp883")
+type = 9
 name = "Spikes"
 description = "Stacks of Spikes deal recoil damage to attacking units on hit. Doesn't clear."
 image = ExtResource("1_n10l2")
 color = Color(0.352941, 0.584314, 0.639216, 1)
+is_buff = 0
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

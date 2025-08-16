@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dk8o1ao3lkknt"]
+[gd_scene load_steps=21 format=3 uid="uid://dk8o1ao3lkknt"]
 
 [ext_resource type="Script" uid="uid://b53rwvtppklg0" path="res://scenes/attack test/battle_manager.gd" id="1_hl42r"]
 [ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="2_1xfu1"]
 [ext_resource type="PackedScene" uid="uid://cvr34bo5xs36n" path="res://components/Monster/Monster.tscn" id="2_arrn3"]
 [ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="3_qt2kh"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="4_6i06r"]
-[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/elements/blaze.tres" id="5_dlwvi"]
 [ext_resource type="Resource" uid="uid://lw8vcol4w3wi" path="res://resources/elements/flourish.tres" id="6_86cjg"]
 [ext_resource type="Resource" uid="uid://cgujytr7nyt1l" path="res://resources/monsters/second_monster.tres" id="6_njngx"]
 [ext_resource type="Resource" uid="uid://bitjw0ny8vdcx" path="res://resources/elements/tide.tres" id="7_b3xx5"]
 [ext_resource type="Resource" uid="uid://cwt2k7kt5n1b2" path="res://resources/monsters/fourth_monster.tres" id="7_cvtn4"]
+[ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="7_hl42r"]
 [ext_resource type="Resource" uid="uid://doi4upppu4s7d" path="res://resources/monsters/third_monster.tres" id="7_pn4aa"]
 [ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/elements/surge.tres" id="9_kktua"]
 [ext_resource type="Resource" uid="uid://barjkyg7ancqv" path="res://resources/monsters/fifth_monster.tres" id="11_mslqh"]
@@ -22,6 +22,18 @@
 [sub_resource type="Curve" id="Curve_vyoyv"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_hl42r"]
+resource_local_to_scene = true
+resource_name = "Blaze"
+script = ExtResource("4_6i06r")
+type = 1
+name = "Blaze"
+description = "Stacks of Blaze on a unit are added to its attack power, clears after triggering."
+image = ExtResource("7_hl42r")
+color = Color(0.980392, 0.647059, 0.333333, 1)
+is_buff = 0
+metadata/_custom_type_script = "uid://caek4h8ojig5g"
 
 [node name="AttackTest" type="Node2D"]
 script = ExtResource("1_hl42r")
@@ -44,7 +56,7 @@ round_precision = 12
 [node name="Monster1" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(416, 88)
 monster_definition = ExtResource("3_qt2kh")
-debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("5_dlwvi"), ExtResource("5_dlwvi")])
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([SubResource("Resource_hl42r"), SubResource("Resource_hl42r")])
 
 [node name="Monster2" parent="." instance=ExtResource("2_arrn3")]
 position = Vector2(192, 288)

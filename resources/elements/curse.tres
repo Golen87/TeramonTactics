@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://cf8gt6kv6pdid"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://cf8gt6kv6pdid"]
 
 [ext_resource type="Texture2D" uid="uid://ccjeyhp05ieph" path="res://assets/images/types/curse.png" id="1_7o7yr"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_egi08"]
 
 [resource]
+resource_local_to_scene = true
+resource_name = "Curse"
 script = ExtResource("2_egi08")
+type = 2
 name = "Curse"
 description = "Stacks of Curse double damage taken from all sources, ticks down after taking damage."
 image = ExtResource("1_7o7yr")

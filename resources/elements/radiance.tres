@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://beiy18o0wias8"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://beiy18o0wias8"]
 
 [ext_resource type="Texture2D" uid="uid://bdcq55043m08" path="res://assets/images/types/radiance.png" id="1_4ow3y"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_uatno"]
 
 [resource]
 script = ExtResource("2_uatno")
+type = 6
 name = "Radiance"
 description = "Radiance increases all effects by 1(colored text, e.g. 'apply 2 Blaze')"
 image = ExtResource("1_4ow3y")
 color = Color(0.992157, 0.980392, 0.627451, 1)
+is_buff = 0
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

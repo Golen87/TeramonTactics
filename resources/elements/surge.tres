@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://dya54oevobp1v"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://dya54oevobp1v"]
 
 [ext_resource type="Texture2D" uid="uid://db03dk7e111no" path="res://assets/images/types/surge.png" id="1_nmouv"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="2_t3rf8"]
 
 [resource]
 script = ExtResource("2_t3rf8")
+type = 9
 name = "Surge"
 description = "Stacks of Spark trigger when the amount exceeds current health, deals equal damage to self and adjecent units."
 image = ExtResource("1_nmouv")

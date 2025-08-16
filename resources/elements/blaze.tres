@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="TypeDefinition" load_steps=3 format=3 uid="uid://m5pgt4e0tcu1"]
+[gd_resource type="Resource" script_class="ElementDefinition" load_steps=3 format=3 uid="uid://m5pgt4e0tcu1"]
 
 [ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="1_634a7"]
 [ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="1_cj661"]
 
 [resource]
+resource_local_to_scene = true
+resource_name = "Blaze"
 script = ExtResource("1_cj661")
+type = 1
 name = "Blaze"
 description = "Stacks of Blaze on a unit are added to its attack power, clears after triggering."
 image = ExtResource("1_634a7")

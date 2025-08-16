@@ -2,6 +2,9 @@ extends Resource
 class_name ElementDefinition
 
 
+## Element type
+@export var type: Element.Type
+
 ## Element name
 @export var name: String
 
@@ -16,3 +19,8 @@ class_name ElementDefinition
 
 ## Element buff or debuff
 @export_enum("Buff", "Debuff") var is_buff: int
+
+
+
+func _to_string() -> String:
+	return name
