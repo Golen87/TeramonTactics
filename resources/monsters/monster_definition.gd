@@ -17,6 +17,20 @@ extends Resource
 		description = value
 		emit_changed()
 
+## Monster descriptive text
+@export var offensive_description: String:
+	get: return offensive_description
+	set(value):
+		offensive_description = value
+		emit_changed()
+
+## Monster descriptive text
+@export var defensive_description: String:
+	get: return defensive_description
+	set(value):
+		defensive_description = value
+		emit_changed()
+
 ## Monster sprite
 @export var image: Texture2D:
 	get: return image
@@ -25,14 +39,14 @@ extends Resource
 		emit_changed()
 
 ## Monster primary element
-@export var element1: ElementDefinition:
+@export var element1: Element.Type:
 	get: return element1
 	set(value):
 		element1 = value
 		emit_changed()
 
 ## Monster secondary element
-@export var element2: ElementDefinition:
+@export var element2: Element.Type:
 	get: return element2
 	set(value):
 		element2 = value
@@ -72,3 +86,6 @@ extends Resource
 	set(value):
 		speed = value
 		emit_changed()
+
+## Effects applied during combat
+@export var effects: Array[Effect] = []

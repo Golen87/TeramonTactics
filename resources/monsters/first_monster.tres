@@ -1,17 +1,21 @@
 [gd_resource type="Resource" script_class="MonsterDefinition" load_steps=4 format=3 uid="uid://b7w7bwm41si2u"]
 
 [ext_resource type="Texture2D" uid="uid://cwolg3o3xxme3" path="res://assets/images/monsters/placeholder1.png" id="1_ff04p"]
+[ext_resource type="Script" uid="uid://dh7qnk3wk78bv" path="res://resources/effects/effect.gd" id="1_gj84p"]
 [ext_resource type="Script" uid="uid://c07s2gq47j546" path="res://resources/monsters/monster_definition.gd" id="2_vqcsl"]
-[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/types/blaze.tres" id="3_gj84p"]
 
 [resource]
 script = ExtResource("2_vqcsl")
 name = "Fire Monster"
 description = "Example monster text"
+offensive_description = "Add 1 Blaze"
+defensive_description = "Add 2 Blaze"
 image = ExtResource("1_ff04p")
-type1 = ExtResource("3_gj84p")
+element1 = 1
+element2 = 0
 health = 7
 attack = 3
 action_points = 3
 frency = 1
 speed = 4
+effects = Array[ExtResource("1_gj84p")]([])

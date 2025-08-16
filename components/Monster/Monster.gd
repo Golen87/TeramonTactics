@@ -65,6 +65,11 @@ func _on_debug_stacked_effects_update():
 
 # --- Effect tokens --- #
 
+func get_effects(when: Effect.When) -> Array[Effect]:
+	return monster_definition.effects.filter(
+		func(effect: Effect): return effect.when == when
+	)
+
 func add_stack_effect(element: ElementDefinition):
 	var token = effect_token.instantiate()
 	token.element = element
@@ -80,7 +85,8 @@ func get_effect_stack() -> Array[EffectToken]:
 	var tokens: Array[EffectToken] = []
 	for child in effect_stack.get_children():
 		if child is EffectToken:
-			tokens.append(child)
+			if not child.used:
+				tokens.append(child)
 	return tokens
 
 func _rearrange_tokens():
@@ -119,3 +125,7 @@ func _on_enter() -> void:
 
 func _on_exit() -> void:
 	is_hovered = false
+
+
+func _to_string() -> String:
+	return monster_definition.name

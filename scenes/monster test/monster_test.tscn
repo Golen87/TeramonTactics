@@ -1,35 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwrrioew4x5j1"]
+[gd_scene load_steps=7 format=3 uid="uid://cwrrioew4x5j1"]
 
 [ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="1_472bh"]
 [ext_resource type="PackedScene" uid="uid://cvr34bo5xs36n" path="res://components/Monster/Monster.tscn" id="2_6t3rr"]
 [ext_resource type="Resource" uid="uid://doi4upppu4s7d" path="res://resources/monsters/third_monster.tres" id="2_djxob"]
 [ext_resource type="Resource" uid="uid://cgujytr7nyt1l" path="res://resources/monsters/second_monster.tres" id="3_0jqhj"]
-[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="3_oblpb"]
-[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/elements/blaze.tres" id="4_80ref"]
-[ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/elements/surge.tres" id="4_sg4ow"]
 [ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="4_ymlnh"]
 [ext_resource type="PackedScene" uid="uid://kwwiw6amg8lp" path="res://components/MonsterPanel/MonsterPanel.tscn" id="5_0jqhj"]
-[ext_resource type="Resource" uid="uid://bfcx14jds5ikg" path="res://resources/elements/shield.tres" id="6_it7ne"]
-[ext_resource type="Resource" uid="uid://bitjw0ny8vdcx" path="res://resources/elements/tide.tres" id="7_vydsk"]
-[ext_resource type="Resource" uid="uid://dhrodttjiu2xw" path="res://resources/elements/tailwind.tres" id="8_it7ne"]
-[ext_resource type="Resource" uid="uid://lw8vcol4w3wi" path="res://resources/elements/flourish.tres" id="8_vx0s6"]
 
 [node name="MonsterTest" type="Node2D"]
 
 [node name="Monster1" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(1000, 216)
 monster_definition = ExtResource("2_djxob")
-stacked_effects = Array[ExtResource("3_oblpb")]([ExtResource("7_vydsk"), ExtResource("7_vydsk"), ExtResource("6_it7ne"), ExtResource("6_it7ne"), ExtResource("6_it7ne")])
 
 [node name="Monster2" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(864, 464)
 monster_definition = ExtResource("3_0jqhj")
-stacked_effects = Array[ExtResource("3_oblpb")]([ExtResource("4_sg4ow"), ExtResource("4_sg4ow"), ExtResource("4_sg4ow"), ExtResource("4_sg4ow"), ExtResource("8_it7ne"), ExtResource("8_it7ne"), ExtResource("8_it7ne")])
 
 [node name="Monster3" parent="." instance=ExtResource("2_6t3rr")]
 position = Vector2(640, 304)
 monster_definition = ExtResource("4_ymlnh")
-stacked_effects = Array[ExtResource("3_oblpb")]([ExtResource("4_80ref"), ExtResource("4_80ref"), ExtResource("8_vx0s6")])
 
 [node name="MonsterPanel1" parent="." instance=ExtResource("5_0jqhj")]
 monster_definition = ExtResource("4_ymlnh")

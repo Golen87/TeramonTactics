@@ -154,12 +154,12 @@ offset_bottom = 88.0
 text = "99"
 vertical_alignment = 1
 
-[node name="AttackEffectLabel" type="Label" parent="."]
+[node name="OffensiveEffectLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 256.0
 offset_right = 384.0
 offset_bottom = 64.0
-text = "Attack Effect Attack Effect"
+text = "Offensive Label"
 vertical_alignment = 1
 autowrap_mode = 1
 
@@ -168,12 +168,12 @@ position = Vector2(184, 80)
 points = PackedVector2Array(64, -16, 152.11, -16, 192, -16)
 width = 1.0
 
-[node name="AllyEffectLabel" type="Label" parent="."]
+[node name="DefensiveEffectLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 64.0
 offset_right = 384.0
 offset_bottom = 128.0
-text = "Ally Effect Ally Effect"
+text = "Defensive Label"
 vertical_alignment = 1
 autowrap_mode = 1
