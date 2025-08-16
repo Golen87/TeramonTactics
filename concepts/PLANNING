@@ -1,0 +1,151 @@
+
+Draw 5 cards
+- 5 items
+
+Example cards
+- Totem guy - 2 AP
+- Blaze - apply 2 blaze to all allies
+- Ice - reduces 1 AP from an enemy
+- Mister Wood - Consume
+- Taunting Totem - Taunt, Consume
+- Energy Seed: Restores 1 AP, 0 cost (in the upper right corner)
+- Rusty Thorn: Damage 2 to any unit on the board
+
+Effects
+- Taunt: Draws enemies near
+- Consume: You can only play it once, then it's removed from the deck
+
+8x8 board
+- 4 units per player
+
+
+
+Monster
+- 6 Niblit
+
+5 HP
+Base attack 2
+AP action points 3
+Frenzy 1 (number of attacks, )
+Water/ Fire symbol
+
+Attack vs Ally
+Transfer 3
+Blaze  status effect, fire has "blaze". Water has "tide", Grass has "healing"
+- 2 blaze = when it attacks it does 2 damage normal but blaze adds to your attack, once you attack it clears. special effect that this unit doesn't clear its blaze
+Blaze clears upon attack, so you can keep stacking it on all of your monsters
+- Masaki attack apply 2 poison tokens, healing apply 2 healing
+- Healing, 4 healing points, heal 4 hp then reduce healing points by 1
+- Poison, a unit has 2 poison points, reduce 2 hp, then reduce poison by 1
+
+Plays a totem wherever which pulls the enemy away
+
+
+Attack power
+- Barrage Straight line 3 tiles
+- Fun patterns
+
+Godot modding, assets and classes as .pkg file
+
+
+Grid tiles
+Water, only flying and water types
+Rocks are blocking
+
+
+
+
+
+
+
+
+
+
+
+
+How to summon a monster
+- No requirement
+- Tug of war, -10 to 10, when you play a card that costs 2, you go to -2
+-- The more you play the more your opponent gets to play
+
+
+
+
+
+
+
+Blaze
+Flourish
+Tide
+Surge
+Venom
+Tailwind
+Freeze
+Sheild
+Spikes
+Veil
+Shatter
+Curse
+Darkness
+Radiance
+
+
+
+
+
+
+
+
+
+
+TYPES
+- Attack (attacker vs defender)
+- Damage (environment vs defender)
+
+
+ATTACKER
+- blaze (increases damage)
+
+DEFENDER
+- veil (cancels attack)
+- shield (decreases damage)
+- tide (increases damage, trigger a new healing call)
+- spikes (trigger a new damage call)
+- shatter (increases damage)
+- curse (doubles damage)
+
+
+LATER
+- blaze (post-attack -> set to 0)
+
+- surge (post-attack -> signal damage + reduce by 1)
+- venom (post-attack -> signal damage + reduce by 1)
+- flourish (post-turn -> signal healing + reduce by 1)
+- tailwind (pre-turn)
+- freeze (pre-turn)
+- darkness (trigger on "apply" or just reduce it prior)
+- radiance (trigger on "apply" or just reduce it prior)
+
+
+
+
+
+EFFECTS
+- Heal 2
+- Damage 2
+- Gain 2 <TYPE>
+- Apply 3 <TYPE>
+- Area 1
+- Apply 2 Attack
+- Don't clear <TYPE>
+- Barrage 3
+- Cone 1
+- Knockback 2
+- Taunt
+- Consume
+- Apply X <TYPE> to a <RANDOM ALLY>
+
+- Heal
+    - Target: Self
+    - Amount: 3
+
