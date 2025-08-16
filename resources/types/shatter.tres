@@ -9,4 +9,5 @@ name = "Shatter"
 description = "Stacks of Shatter increases damage from all sources by stack count. Doesn't clear."
 image = ExtResource("1_d1er8")
 color = Color(0.968627, 0.52549, 0.513726, 1)
+is_buff = 1
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -9,4 +9,5 @@ name = "Darkness"
 description = "Darkness decreases all effects by 1(colored text, e.g. 'apply 2 Blaze')"
 image = ExtResource("1_embid")
 color = Color(0.345098, 0.341176, 0.380392, 1)
+is_buff = 1
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

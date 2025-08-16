@@ -9,4 +9,5 @@ name = "Venom"
 description = "Stacks of Venom deal damage to the unit equal to stacks, ticks down each turn."
 image = ExtResource("1_ef2og")
 color = Color(0.713726, 0.407843, 0.803922, 1)
+is_buff = 1
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -1,0 +1,84 @@
+[gd_scene load_steps=20 format=3 uid="uid://dk8o1ao3lkknt"]
+
+[ext_resource type="Script" uid="uid://b53rwvtppklg0" path="res://scenes/attack test/battle_manager.gd" id="1_hl42r"]
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="2_1xfu1"]
+[ext_resource type="PackedScene" uid="uid://cvr34bo5xs36n" path="res://components/Monster/Monster.tscn" id="2_arrn3"]
+[ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="3_qt2kh"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/types/type_definition.gd" id="4_6i06r"]
+[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/types/blaze.tres" id="5_dlwvi"]
+[ext_resource type="Resource" uid="uid://lw8vcol4w3wi" path="res://resources/types/flourish.tres" id="6_86cjg"]
+[ext_resource type="Resource" uid="uid://cgujytr7nyt1l" path="res://resources/monsters/second_monster.tres" id="6_njngx"]
+[ext_resource type="Resource" uid="uid://bitjw0ny8vdcx" path="res://resources/types/tide.tres" id="7_b3xx5"]
+[ext_resource type="Resource" uid="uid://cwt2k7kt5n1b2" path="res://resources/monsters/fourth_monster.tres" id="7_cvtn4"]
+[ext_resource type="Resource" uid="uid://doi4upppu4s7d" path="res://resources/monsters/third_monster.tres" id="7_pn4aa"]
+[ext_resource type="Resource" uid="uid://dya54oevobp1v" path="res://resources/types/surge.tres" id="9_kktua"]
+[ext_resource type="Resource" uid="uid://barjkyg7ancqv" path="res://resources/monsters/fifth_monster.tres" id="11_mslqh"]
+[ext_resource type="Resource" uid="uid://dug1jbvhrscfu" path="res://resources/monsters/sixth_monster.tres" id="13_vxo5f"]
+[ext_resource type="Resource" uid="uid://bfcx14jds5ikg" path="res://resources/types/shield.tres" id="14_4563a"]
+[ext_resource type="Resource" uid="uid://bnllfcphxpwb" path="res://resources/types/spikes.tres" id="15_fjj0g"]
+[ext_resource type="Script" uid="uid://bbp37oek6a6rt" path="res://components/Arrow drawer/ArrowDrawer.gd" id="16_hl42r"]
+[ext_resource type="Texture2D" uid="uid://chpxb2vugg3qu" path="res://assets/images/line.png" id="16_vyoyv"]
+
+[sub_resource type="Curve" id="Curve_vyoyv"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="AttackTest" type="Node2D"]
+script = ExtResource("1_hl42r")
+
+[node name="ArrowDrawer" type="Node2D" parent="." node_paths=PackedStringArray("monsters")]
+script = ExtResource("16_hl42r")
+monsters = [NodePath("../Monster1"), NodePath("../Monster2"), NodePath("../Monster3"), NodePath("../Monster4"), NodePath("../Monster5"), NodePath("../Monster6")]
+
+[node name="Line2D" type="Line2D" parent="ArrowDrawer"]
+position = Vector2(8, 16)
+points = PackedVector2Array(440, 336, 568, 256, 696, 328)
+width = 50.0
+width_curve = SubResource("Curve_vyoyv")
+texture = ExtResource("16_vyoyv")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 12
+
+[node name="Monster1" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(416, 88)
+monster_definition = ExtResource("3_qt2kh")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("5_dlwvi"), ExtResource("5_dlwvi")])
+
+[node name="Monster2" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(192, 288)
+monster_definition = ExtResource("6_njngx")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a"), ExtResource("14_4563a")])
+
+[node name="Monster3" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(416, 488)
+monster_definition = ExtResource("7_cvtn4")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("7_b3xx5"), ExtResource("7_b3xx5"), ExtResource("7_b3xx5")])
+
+[node name="Monster4" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(736, 88)
+monster_definition = ExtResource("7_pn4aa")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua"), ExtResource("9_kktua")])
+
+[node name="Monster5" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(960, 288)
+monster_definition = ExtResource("11_mslqh")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("6_86cjg"), ExtResource("6_86cjg"), ExtResource("6_86cjg")])
+
+[node name="Monster6" parent="." instance=ExtResource("2_arrn3")]
+position = Vector2(736, 488)
+monster_definition = ExtResource("13_vxo5f")
+debug_stacked_effects = Array[ExtResource("4_6i06r")]([ExtResource("15_fjj0g"), ExtResource("15_fjj0g")])
+
+[node name="Explanation" type="Label" parent="."]
+offset_right = 337.0
+offset_bottom = 23.0
+text = "Drag with mouse from attacker to defender"
+
+[node name="BackButton" parent="." instance=ExtResource("2_1xfu1")]
+offset_left = 46.0
+offset_top = 613.0
+offset_right = 46.0
+offset_bottom = 613.0

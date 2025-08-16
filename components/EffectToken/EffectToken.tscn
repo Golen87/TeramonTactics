@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bin7y284eppfp"]
+[gd_scene load_steps=3 format=3 uid="uid://bin7y284eppfp"]
 
-[ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="1_ih3qi"]
+[ext_resource type="Texture2D" uid="uid://cpds4olfjx34a" path="res://assets/images/cross.png" id="1_ih3qi"]
+[ext_resource type="Script" uid="uid://csbefuniuhe8h" path="res://components/EffectToken/effect_token.gd" id="2_82xjj"]
 
 [node name="EffectToken" type="TextureRect"]
 custom_minimum_size = Vector2(24, 24)
+anchors_preset = -1
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_right = -24.192
+offset_bottom = -23.976
 texture = ExtResource("1_ih3qi")
-expand_mode = 2
+expand_mode = 1
+script = ExtResource("2_82xjj")

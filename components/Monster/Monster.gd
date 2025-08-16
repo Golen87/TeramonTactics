@@ -1,11 +1,15 @@
 @tool
 extends Node2D
+class_name Monster
 
 
 @onready var monster_image: TextureRect = %MonsterImage
 @onready var health_label: Label = %HealthLabel
 @onready var attack_label: Label = %AttackLabel
 @onready var effect_stack_container: HBoxContainer = %EffectStack
+
+signal drag_started(monster: Monster)
+signal drag_ended(monster: Monster)
 
 
 @export var monster_definition: MonsterDefinition:
@@ -23,53 +27,88 @@ extends Node2D
 func _on_definition_changed():
 	if monster_definition:
 		monster_image.texture = monster_definition.image
-		health = monster_definition.health
-		attack = monster_definition.attack
+		health_label.text = str(monster_definition.health)
+		attack_label.text = str(monster_definition.attack)
 
 
-@export var health: int:
+var health: int = 0:
 	set(value):
 		health = value
-
-@export var attack: int:
+		health_label.text = str(health)
+var attack: int = 0:
 	set(value):
 		attack = value
-
-@export var stacked_effects: Array[TypeDefinition]:
-	set(value):
-		stacked_effects = value
-
+		attack_label.text = str(attack)
 
 const effect_token = preload("res://components/EffectToken/EffectToken.tscn")
 
-func _ready() -> void:
-	health = monster_definition.health
-	attack = monster_definition.attack
-	health_label.text = str(health)
-	attack_label.text = str(attack)
+
+# Monsters would never normally spawn with tokens, so this is purely used during testing
+@export var debug_stacked_effects: Array[TypeDefinition]:
+	set(value):
+		debug_stacked_effects = value
+		if Engine.is_editor_hint():
+			_on_debug_stacked_effects_update()
+func _on_debug_stacked_effects_update():
+	if not effect_stack_container:
+		return
 	for child in effect_stack_container.get_children():
+		effect_stack_container.remove_child(child)
 		child.queue_free()
-	for effect in stacked_effects:
-		var token = effect_token.instantiate()
-		token.texture = effect.image
-		effect_stack_container.add_child(token)
-	var separation = (effect_stack_container.size[0] - 24 * len(stacked_effects)) / (len(stacked_effects) - 1)
-	separation = min(separation, 8)
-	effect_stack_container.add_theme_constant_override(&"separation", separation)
+	for type in debug_stacked_effects:
+		if type:
+			var token = effect_token.instantiate()
+			token.type = type
+			effect_stack_container.add_child(token)
+	_rearrange_tokens()
+
+
+# --- Effect tokens --- #
+
+func add_stack_effect(type: TypeDefinition):
+	var token = effect_token.instantiate()
+	token.type = type
+	effect_stack_container.add_child(token)
+	_rearrange_tokens()
+
+#func remove_stack_effect(index: int):
+	#stacked_effects.pop_at(index)
+	#_rearrange_tokens()
+
+
+func _rearrange_tokens():
+	var tokens = effect_stack_container.get_children()
+	if len(tokens) > 1:
+		var separation = (112 - 24 * len(tokens)) / (len(tokens) - 1)
+		separation = min(separation, 8)
+		effect_stack_container.add_theme_constant_override(&"separation", separation)
+
+
+func _ready() -> void:
+	if monster_definition:
+		health = monster_definition.health
+		attack = monster_definition.attack
+
+	_on_debug_stacked_effects_update()
+
+	#drag_button.pressed.connect(_on_drag_pressed)
 
 
 # --- Input --- #
 
 var is_held := false
+var is_hovered := false
 
-func _on_button_button_down() -> void:
+func _on_down() -> void:
 	is_held = true
+	emit_signal("drag_started", self)
 
-
-func _on_button_button_up() -> void:
+func _on_up() -> void:
 	is_held = false
+	emit_signal("drag_ended", self)
 
+func _on_enter() -> void:
+	is_hovered = true
 
-func _process(delta: float) -> void:
-	if is_held:
-		global_position = get_global_mouse_position()
+func _on_exit() -> void:
+	is_hovered = false
