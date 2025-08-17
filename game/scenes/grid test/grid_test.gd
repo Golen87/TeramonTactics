@@ -2,13 +2,14 @@
 class_name Grid extends Node2D
 
 
-@onready var tilemap: MyTileMap = $TileMapLayer
+@onready var tilemap: TileMapLayer = $TileMapLayer
+@onready var tilemap_highlight = $TileMapHighlight
 
 const dudeRef = preload("res://scenes/grid test/dude.tscn")
 var dudes: Array[Dude] = []
 
 func _ready() -> void:
-	const dude_count = 12
+	const dude_count = 15
 	var cells = tilemap.get_used_cells()
 	cells.shuffle()
 
@@ -22,17 +23,52 @@ func _ready() -> void:
 			var dude: Dude = dudeRef.instantiate()
 			dudes.append(dude)
 			add_child(dude)
-			dude.grid = self
 			dude.cell = cell
 			dude.position = gpos
 			dude.clicked.connect(on_monster_clicked)
 
 
-func get_available_cells(dude: Dude) -> Array[Vector2i]:
-	return tilemap.get_surrounding_cells(dude.cell).filter(is_empty)
+# Returns a list of nearby cells that are empty
+func get_available_cells(cell: Vector2i) -> Array[Vector2i]:
+	return tilemap.get_surrounding_cells(cell).filter(is_empty)
+
+# Finds all available cells within max_moves number of steps
+func get_reachable_cells(start: Vector2i, max_moves: int) -> Array[Vector2i]:
+	var frontier: Array[Vector2i] = [start]
+	var visited: = { start: 0 }  # Dictionary: cell -> distance
+	var result: Array[Vector2i] = []
+
+	while not frontier.is_empty():
+		var current = frontier.pop_front()
+		var dist = visited[current]
+
+		# Skip checking if max_moves reached
+		if dist >= max_moves:
+			continue
+
+		# Check cell neighbors
+		for neighbor in get_available_cells(current):
+			if neighbor not in visited:
+				visited[neighbor] = dist + 1
+				frontier.append(neighbor)
+				result.append(neighbor)
+
+	return result
+
+func clear_selection():
+	tilemap_highlight.clear()
+	for dude in dudes:
+		dude.selected = false
 
 func on_monster_clicked(dude: Dude) -> void:
-	select_tile(dude.cell)
+	clear_selection()
+	dude.selected = true
+
+	# Show cells that can be moved to
+	var MOVE_DISTANCE = 3 # Replace with monster.action_points
+	var available_cells = get_reachable_cells(dude.cell, MOVE_DISTANCE)
+	for cell in available_cells:
+		tilemap_highlight.set_cell(cell, 0, Vector2i(0, 0))
 
 func is_empty(cell: Vector2i) -> bool:
 	if tilemap.get_cell_tile_data(cell):
@@ -50,7 +86,10 @@ func get_monster(cell: Vector2i) -> Dude:
 	return null
 
 func get_neighboring_monster(cell: Vector2i) -> Dude:
-	return tilemap.get_surrounding_cells(cell).filter(get_monster).map(get_monster).pick_random()
+	var monsters = tilemap.get_surrounding_cells(cell).filter(get_monster).map(get_monster)
+	if monsters:
+		return monsters.pick_random()
+	return null
 
 func cell_to_world(cell: Vector2i) -> Vector2:
 	return tilemap.to_global(tilemap.map_to_local(cell))
@@ -66,11 +105,21 @@ func _input(event: InputEvent) -> void:
 		var tile_data = tilemap.get_cell_tile_data(cell)
 		if tile_data:
 			select_tile(cell)
+		else:
+			tilemap_highlight.clear()
 
 func select_tile(cell: Vector2i):
-	for other_cell in tilemap.get_used_cells():
-		tilemap.is_selected[other_cell as Vector2i] = false
-	tilemap.is_selected[cell] = true
-
 	prints("Tile clicked!", cell)
-	tilemap.notify_runtime_tile_data_update()
+
+	# Clicked on highlighted tile. Move selected dude.
+	if tilemap_highlight.get_cell_tile_data(cell):
+		tilemap_highlight.clear()
+		for dude in dudes:
+			if dude.selected:
+				dude.cell = cell
+				dude.move(cell_to_world(cell))
+				break
+	# Highlight tile
+	else:
+		tilemap_highlight.clear()
+		tilemap_highlight.set_cell(cell, 0, Vector2i(Vector2i(1, 0)))

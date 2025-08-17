@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bpsf0ivt0iyvr"]
+
+[ext_resource type="Texture2D" uid="uid://bq4kawrkl17r0" path="res://assets/images/grid/tile_highlight.png" id="1_cg4gp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lk1tc"]
+resource_name = "TileHighlight"
+texture = ExtResource("1_cg4gp")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -32)
+0:0/0/modulate = Color(1, 0.823529, 0, 1)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -32)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -32)
+2:0/0/modulate = Color(0.931938, 0.0136111, 0, 1)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -32)
+3:0/0/modulate = Color(0.392157, 0.392157, 0.392157, 0.654902)
+
+[resource]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(128, 64)
+custom_data_layer_0/name = "Water"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_lk1tc")
