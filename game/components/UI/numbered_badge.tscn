@@ -1,26 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://vogkx4y4v3ui"]
+[gd_scene load_steps=4 format=3 uid="uid://vogkx4y4v3ui"]
 
 [ext_resource type="Script" uid="uid://d3gp1ph53ae1l" path="res://components/UI/numbered_badge.gd" id="1_ukwuc"]
-[ext_resource type="Texture2D" uid="uid://db03dk7e111no" path="res://assets/images/types/surge.png" id="2_53j28"]
+[ext_resource type="Resource" uid="uid://c3cqjyw1qh1u2" path="res://resources/elements/stats/health.tres" id="2_53j28"]
+[ext_resource type="Texture2D" uid="uid://pk70y4e8ct7k" path="res://assets/images/icons/health.png" id="3_5tmrt"]
 
 [node name="NumberedBadge" type="Control"]
-visible = false
-custom_minimum_size = Vector2(26, 26)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 1
+script = ExtResource("1_ukwuc")
+attribute = ExtResource("2_53j28")
+amount = 99
+
+[node name="Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ukwuc")
-
-[node name="Sprite" type="TextureRect" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(26, 26)
-layout_mode = 0
 size_flags_horizontal = 4
-texture = ExtResource("2_53j28")
-expand_mode = 1
+mouse_filter = 2
+texture = ExtResource("3_5tmrt")
+expand_mode = 5
 
 [node name="AmountText" type="Label" parent="Sprite"]
 unique_name_in_owner = true
@@ -32,6 +38,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 18
-text = "2"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1

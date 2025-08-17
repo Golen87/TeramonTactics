@@ -10,5 +10,5 @@ name = "Veil"
 description = "Stacks of Veil negate entire instances of damage, then tick down."
 image = ExtResource("1_7ydw7")
 color = Color(0.929412, 0.572549, 0.890196, 1)
-is_buff = 0
+is_offensive = true
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

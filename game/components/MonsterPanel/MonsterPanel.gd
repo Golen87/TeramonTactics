@@ -36,7 +36,7 @@ func _on_monster_changed():
 		attack_label.text = str(monster_definition.attack)
 		speed_label.text = str(monster_definition.speed)
 		action_label.text = str(monster_definition.action_points)
-		frenzy_label.text = str(monster_definition.frency)
+		frenzy_label.text = str(monster_definition.fury)
 		offensive_effect_label.text = monster_definition.offensive_description
 		defensive_effect_label.text = monster_definition.defensive_description
 

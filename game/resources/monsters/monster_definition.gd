@@ -2,7 +2,7 @@
 class_name MonsterDefinition
 extends Resource
 
-#region variables
+#region persistent variables
 
 @export_group("Visuals")
 ## Monster sprite
@@ -64,10 +64,10 @@ extends Resource
 		emit_changed()
 
 ## The number of attacks per turn
-@export_range(1, 10, 1) var frency: int:
-	get: return frency
+@export_range(1, 10, 1) var fury: int:
+	get: return fury
 	set(value):
-		frency = value
+		fury = value
 		emit_changed()
 
 ## Monster priority
@@ -96,10 +96,73 @@ extends Resource
 ## Effects applied during combat
 @export var effects: Array[Effect] = []
 
+#endregion
 
+#region transient variables
 
+# Monster health points
+var current_health: int = health:
+	get: return current_health
+	set(value):
+		current_health = value
+		emit_changed()
 
+## Monster attack strength
+var current_attack: int = attack:
+	get: return current_attack
+	set(value):
+		current_attack = value
+		emit_changed()
 
+## The number of action points per turn
+var current_action_points: int = action_points:
+	get: return current_action_points
+	set(value):
+		current_action_points = value
+		emit_changed()
 
+## The number of attacks per turn
+var current_fury: int = fury:
+	get: return current_fury
+	set(value):
+		current_fury = value
+		emit_changed()
+
+## Monster priority
+var current_speed: int = speed:
+	get: return current_speed
+	set(value):
+		current_speed = value
+		emit_changed()
+
+var statuses: Dictionary[Element.Type, int]
+
+#endregion
+
+#region functions
+
+func reset():
+	current_health = health
+	current_attack = attack
+	current_action_points = action_points
+	current_fury = fury
+	current_speed = speed
+	
+	statuses.clear()
+
+func add_status(_type: Element.Type, amount):
+	if not statuses.has(_type):
+		if amount > 0:
+			statuses[_type] = amount
+			emit_changed()
+		return
+	
+	var new_amount = statuses[_type] + amount
+	if new_amount > 0:
+		statuses[_type] = new_amount
+	else:
+		statuses.erase(_type)
+	
+	emit_changed()
 
 #endregion

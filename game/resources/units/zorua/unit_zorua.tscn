@@ -1,16 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://buv6p2q0215b7"]
+[gd_scene load_steps=12 format=3 uid="uid://buv6p2q0215b7"]
 
 [ext_resource type="PackedScene" uid="uid://db4olnmg1des6" path="res://components/units/unit.tscn" id="1_35faa"]
 [ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="2_dibsa"]
 [ext_resource type="Texture2D" uid="uid://cg2j0gltde2f0" path="res://assets/images/units/unit_zorua.png" id="2_fbij7"]
 [ext_resource type="AnimationLibrary" uid="uid://j3gnofk7vx4u" path="res://resources/units/zorua/animations/unit_zorua_anims.tres" id="3_64wtc"]
-[ext_resource type="Resource" uid="uid://c3cqjyw1qh1u2" path="res://resources/elements/stats/health.tres" id="6_f31hx"]
-[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/elements/blaze.tres" id="7_0qgq6"]
-[ext_resource type="Resource" uid="uid://bfcx14jds5ikg" path="res://resources/elements/shield.tres" id="7_7f8m4"]
-[ext_resource type="Resource" uid="uid://c0d5ut3wxqcer" path="res://resources/elements/stats/attack.tres" id="7_c5037"]
-[ext_resource type="PackedScene" uid="uid://vogkx4y4v3ui" path="res://components/UI/numbered_badge.tscn" id="8_7f8m4"]
-[ext_resource type="Resource" uid="uid://cf8gt6kv6pdid" path="res://resources/elements/curse.tres" id="8_bwj50"]
-[ext_resource type="Resource" uid="uid://dhrodttjiu2xw" path="res://resources/elements/tailwind.tres" id="11_7f8m4"]
+[ext_resource type="Texture2D" uid="uid://ccjeyhp05ieph" path="res://assets/images/types/curse.png" id="7_bwj50"]
+[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="8_4j3wn"]
+[ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="10_2nhpf"]
 
 [sub_resource type="Animation" id="Animation_w18lx"]
 length = 0.001
@@ -80,6 +76,30 @@ _data = {
 &"RESET": SubResource("Animation_w18lx")
 }
 
+[sub_resource type="Resource" id="Resource_xifd5"]
+resource_local_to_scene = true
+resource_name = "Curse"
+script = ExtResource("8_4j3wn")
+type = 2
+name = "Curse"
+description = "Stacks of Curse double damage taken from all sources, ticks down after taking damage."
+image = ExtResource("7_bwj50")
+color = Color(0.376471, 0.435294, 0.729412, 1)
+is_offensive = false
+metadata/_custom_type_script = "uid://caek4h8ojig5g"
+
+[sub_resource type="Resource" id="Resource_0qgq6"]
+resource_local_to_scene = true
+resource_name = "Blaze"
+script = ExtResource("8_4j3wn")
+type = 1
+name = "Blaze"
+description = "Stacks of Blaze on a unit are added to its attack power, clears after triggering."
+image = ExtResource("10_2nhpf")
+color = Color(0.980392, 0.647059, 0.333333, 1)
+is_offensive = false
+metadata/_custom_type_script = "uid://caek4h8ojig5g"
+
 [node name="Zorua" instance=ExtResource("1_35faa")]
 unit_data = ExtResource("2_dibsa")
 
@@ -95,72 +115,11 @@ libraries = {
 &"unit_zorua_anims": ExtResource("3_64wtc")
 }
 
-[node name="HUD" type="Control" parent="." index="2"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -103.0
-offset_top = -196.0
-offset_right = 83.0
-offset_bottom = -37.0
+[node name="HUD" parent="." index="2"]
+offset_bottom = -29.0
 
-[node name="LeftBar" type="VBoxContainer" parent="HUD" index="0"]
-layout_mode = 1
-offset_right = 32.0
-offset_bottom = 92.0
-theme_override_constants/separation = 4
+[node name="Status2" parent="HUD/LeftBar/StatusBarDefensive" index="1"]
+attribute = SubResource("Resource_xifd5")
 
-[node name="Status3" parent="HUD/LeftBar" index="0" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("6_f31hx")
-
-[node name="StatusDefensive" type="VBoxContainer" parent="HUD/LeftBar" index="1"]
-layout_mode = 2
-theme_override_constants/separation = -4
-
-[node name="Status" parent="HUD/LeftBar/StatusDefensive" index="0" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("7_7f8m4")
-amount = 1
-
-[node name="Status2" parent="HUD/LeftBar/StatusDefensive" index="1" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("8_bwj50")
-amount = 2
-
-[node name="RightBar" type="VBoxContainer" parent="HUD" index="1"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -32.0
-offset_bottom = 68.0
-grow_horizontal = 0
-theme_override_constants/separation = 4
-
-[node name="Status4" parent="HUD/RightBar" index="0" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("7_c5037")
-
-[node name="StatusOffensive" type="VBoxContainer" parent="HUD/RightBar" index="1"]
-layout_mode = 2
-theme_override_constants/separation = -4
-
-[node name="Status" parent="HUD/RightBar/StatusOffensive" index="0" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("7_0qgq6")
-
-[node name="Status2" parent="HUD/RightBar/StatusOffensive" index="1" instance=ExtResource("8_7f8m4")]
-visible = true
-layout_mode = 2
-size_flags_horizontal = 4
-attribute = ExtResource("11_7f8m4")
+[node name="Status" parent="HUD/RightBar/StatusBarOffensive" index="0"]
+attribute = SubResource("Resource_0qgq6")

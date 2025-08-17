@@ -16,6 +16,8 @@ class_name NumberedBadge extends Control
 		_update()
 
 func _update():
+	if not is_node_ready(): await ready
+	
 	var is_status: bool = attribute is ElementDefinition
 	var valid = (is_status or attribute is StatDefinition) and not (is_status and amount <= 0)
 	visible = valid

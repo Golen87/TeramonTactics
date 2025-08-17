@@ -20,9 +20,7 @@ func _ready():
 
 func play_animation(_animation: UnitAnimation):
 	var anim_name = animation_library_name + "/" + UnitAnimation.keys()[_animation].to_lower()
-	print(anim_name)
 	if animation_player.has_animation(anim_name):
-		print("play!")
 		animation_player.play(anim_name)
 
 func set_sprite_scale(_scale: float):

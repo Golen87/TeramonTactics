@@ -18,7 +18,7 @@ enum Type {
 	Tailwind,
 	Tide,
 	Veil,
-	Venom,
+	Venom
 }
 
 enum StatType {

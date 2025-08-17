@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://db4olnmg1des6"]
+[gd_scene load_steps=11 format=3 uid="uid://db4olnmg1des6"]
 
 [ext_resource type="Script" uid="uid://dbduv41dwa2ao" path="res://components/units/unit.gd" id="1_ebjxu"]
 [ext_resource type="Script" uid="uid://rbvtd1mlgavm" path="res://components/units/unit_sprite.gd" id="2_ebjxu"]
+[ext_resource type="PackedScene" uid="uid://vogkx4y4v3ui" path="res://components/UI/numbered_badge.tscn" id="4_44qr7"]
 [ext_resource type="Script" uid="uid://errbrqkjljkr" path="res://scripts/state_machine/state_machine.gd" id="4_ith4e"]
+[ext_resource type="Resource" uid="uid://c0d5ut3wxqcer" path="res://resources/elements/stats/attack.tres" id="8_47bw1"]
+[ext_resource type="Resource" uid="uid://dx0lule4xp2wb" path="res://resources/elements/stats/action_points.tres" id="11_h3821"]
+[ext_resource type="Resource" uid="uid://cbuh4a3fd35xg" path="res://resources/elements/stats/fury.tres" id="12_7305b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w18lx"]
 size = Vector2(138, 168)
@@ -90,6 +94,7 @@ vframes = 3
 
 [node name="Collision" type="CollisionShape2D" parent="UnitSprite"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_w18lx")
 
@@ -107,5 +112,80 @@ script = ExtResource("4_ith4e")
 [node name="Walk" type="Node" parent="StateMachine"]
 
 [node name="Attack" type="Node" parent="StateMachine"]
+
+[node name="HUD" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -103.0
+offset_top = -196.0
+offset_right = 83.0
+offset_bottom = -37.0
+mouse_filter = 2
+
+[node name="LeftBar" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="HealthBadge" parent="HUD/LeftBar" instance=ExtResource("4_44qr7")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="StatusBarDefensive" type="VBoxContainer" parent="HUD/LeftBar"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -4
+
+[node name="RightBar" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 68.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="AttackBadge" parent="HUD/RightBar" instance=ExtResource("4_44qr7")]
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("8_47bw1")
+
+[node name="StatusBarOffensive" type="VBoxContainer" parent="HUD/RightBar"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -4
+
+[node name="BottomBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="APBadge" parent="HUD/BottomBar" instance=ExtResource("4_44qr7")]
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("11_h3821")
+amount = 3
+
+[node name="FuryBadge" parent="HUD/BottomBar" instance=ExtResource("4_44qr7")]
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("12_7305b")
+amount = 1
 
 [connection signal="mouse_entered" from="UnitSprite" to="UnitSprite" method="_on_mouse_entered"]

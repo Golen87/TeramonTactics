@@ -10,5 +10,5 @@ name = "Radiance"
 description = "Radiance increases all effects by 1(colored text, e.g. 'apply 2 Blaze')"
 image = ExtResource("1_4ow3y")
 color = Color(0.992157, 0.980392, 0.627451, 1)
-is_buff = 0
+is_offensive = true
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -10,5 +10,5 @@ name = "Tailwind"
 description = "Stacks of Tailwind decreases attack timer by an additional 1 point, then ticks down."
 image = ExtResource("1_wfonn")
 color = Color(0.639216, 0.733333, 0.917647, 1)
-is_buff = 0
+is_offensive = true
 metadata/_custom_type_script = "uid://caek4h8ojig5g"
