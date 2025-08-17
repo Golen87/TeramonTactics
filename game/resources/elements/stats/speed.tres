@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=3 format=3 uid="uid://d358kbhnxaq4m"]
+
+[ext_resource type="Texture2D" uid="uid://bt8huus1kt31u" path="res://assets/images/icons/speed.png" id="1_dh08x"]
+[ext_resource type="Script" uid="uid://dmubl4aa62bim" path="res://resources/elements/stats/stat_definition.gd" id="1_fyj5o"]
+
+[resource]
+script = ExtResource("1_fyj5o")
+type = 5
+name = "Speed"
+description = "Determines priority in a turn"
+image = ExtResource("1_dh08x")
+color = Color(0.126507, 0.677561, 0, 1)
+is_buff = 0
+metadata/_custom_type_script = "uid://dmubl4aa62bim"

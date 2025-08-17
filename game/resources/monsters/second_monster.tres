@@ -23,11 +23,9 @@ metadata/_custom_type_script = "uid://b2enroim2qll3"
 
 [resource]
 script = ExtResource("2_s8blg")
+image = ExtResource("1_bym2w")
 name = "Freeze Monster"
 description = "What a handsome lad"
-offensive_description = "Add 2 attack"
-defensive_description = "Add 1 Flourish to random enemy"
-image = ExtResource("1_bym2w")
 element1 = 5
 element2 = 2
 health = 12
@@ -35,4 +33,6 @@ attack = 1
 action_points = 4
 frency = 2
 speed = 2
+offensive_description = "Add 2 attack"
+defensive_description = "Add 1 Flourish to random enemy"
 effects = Array[ExtResource("1_f1i3d")]([SubResource("Resource_f1i3d"), SubResource("Resource_gamw5")])

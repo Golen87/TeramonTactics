@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=3 format=3 uid="uid://cbuh4a3fd35xg"]
+
+[ext_resource type="Texture2D" uid="uid://bfx0ycg8ihn74" path="res://assets/images/icons/frenzy.png" id="1_0mitw"]
+[ext_resource type="Script" uid="uid://dmubl4aa62bim" path="res://resources/elements/stats/stat_definition.gd" id="1_njb3t"]
+
+[resource]
+script = ExtResource("1_njb3t")
+type = 4
+name = "Fury"
+description = "How often this unit triggers when attacking or assisting."
+image = ExtResource("1_0mitw")
+color = Color(0.922073, 0.41324, 0, 1)
+metadata/_custom_type_script = "uid://dmubl4aa62bim"

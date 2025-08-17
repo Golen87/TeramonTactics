@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=3 format=3 uid="uid://c0d5ut3wxqcer"]
+
+[ext_resource type="Script" uid="uid://dmubl4aa62bim" path="res://resources/elements/stats/stat_definition.gd" id="1_5tyg1"]
+[ext_resource type="Texture2D" uid="uid://b1gthiaaj14lc" path="res://assets/images/icons/attack.png" id="1_6ea8l"]
+
+[resource]
+script = ExtResource("1_5tyg1")
+type = 2
+name = "Attack"
+description = "How much damage this unit deals upon attacking."
+image = ExtResource("1_6ea8l")
+color = Color(0, 0.57338, 0.910853, 1)
+metadata/_custom_type_script = "uid://dmubl4aa62bim"

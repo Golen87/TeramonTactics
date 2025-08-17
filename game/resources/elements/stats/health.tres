@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=3 format=3 uid="uid://c3cqjyw1qh1u2"]
+
+[ext_resource type="Texture2D" uid="uid://pk70y4e8ct7k" path="res://assets/images/icons/health.png" id="1_u55bv"]
+[ext_resource type="Script" uid="uid://dmubl4aa62bim" path="res://resources/elements/stats/stat_definition.gd" id="2_0t6fu"]
+
+[resource]
+script = ExtResource("2_0t6fu")
+type = 1
+name = "Health"
+description = "How much damage this unit can take before fainting"
+image = ExtResource("1_u55bv")
+color = Color(1, 0.2444, 0.307772, 1)
+metadata/_custom_type_script = "uid://dmubl4aa62bim"

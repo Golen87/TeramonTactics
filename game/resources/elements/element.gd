@@ -21,6 +21,15 @@ enum Type {
 	Venom,
 }
 
+enum StatType {
+	None,
+	Health,
+	Attack,
+	ActionPoints,
+	Fury,
+	Speed
+}
+
 #var resources = {
 	#Type.Blaze: load("res://resources/elements/blaze.tres"),
 	#Type.Curse: load("res://resources/elements/curse.tres"),
@@ -39,11 +48,17 @@ enum Type {
 #}
 
 static var _resources: Dictionary = {}
+static var _stat_resources: Dictionary = {}
 
 static func get_element(type: Type) -> Resource:
 	if _resources.is_empty():
 		_init_resources()
 	return _resources.get(type, null)
+
+static func get_stat(type: StatType) -> Resource:
+	if _stat_resources.is_empty():
+		_init_stat_resources()
+	return _stat_resources.get(type, null)
 
 static func _init_resources():
 	_resources = {
@@ -61,6 +76,15 @@ static func _init_resources():
 		Type.Tide: load("res://resources/elements/tide.tres"),
 		Type.Veil: load("res://resources/elements/veil.tres"),
 		Type.Venom: load("res://resources/elements/venom.tres"),
+	}
+
+static func _init_stat_resources():
+	_stat_resources = {
+		StatType.Health: load("res://resources/elements/blaze.tres"),
+		StatType.Attack: load("res://resources/elements/curse.tres"),
+		StatType.ActionPoints: load("res://resources/elements/darkness.tres"),
+		StatType.Fury: load("res://resources/elements/flourish.tres"),
+		StatType.Speed: load("res://resources/elements/freeze.tres")
 	}
 
 

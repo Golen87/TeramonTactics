@@ -2,7 +2,17 @@
 class_name MonsterDefinition
 extends Resource
 
+#region variables
 
+@export_group("Visuals")
+## Monster sprite
+@export var image: Texture2D:
+	get: return image
+	set(value):
+		image = value
+		emit_changed()
+
+@export_group("Details")
 ## Monster name
 @export var name: String:
 	get: return name
@@ -15,27 +25,6 @@ extends Resource
 	get: return description
 	set(value):
 		description = value
-		emit_changed()
-
-## Monster descriptive text
-@export var offensive_description: String:
-	get: return offensive_description
-	set(value):
-		offensive_description = value
-		emit_changed()
-
-## Monster descriptive text
-@export var defensive_description: String:
-	get: return defensive_description
-	set(value):
-		defensive_description = value
-		emit_changed()
-
-## Monster sprite
-@export var image: Texture2D:
-	get: return image
-	set(value):
-		image = value
 		emit_changed()
 
 ## Monster primary element
@@ -52,6 +41,7 @@ extends Resource
 		element2 = value
 		emit_changed()
 
+@export_group("Stats")
 # Monster health points
 @export_range(1, 100, 1) var health: int:
 	get: return health
@@ -87,5 +77,29 @@ extends Resource
 		speed = value
 		emit_changed()
 
+
+@export_group("Effects")
+## Monster descriptive text
+@export var offensive_description: String:
+	get: return offensive_description
+	set(value):
+		offensive_description = value
+		emit_changed()
+
+## Monster descriptive text
+@export var defensive_description: String:
+	get: return defensive_description
+	set(value):
+		defensive_description = value
+		emit_changed()
+
 ## Effects applied during combat
 @export var effects: Array[Effect] = []
+
+
+
+
+
+
+
+#endregion

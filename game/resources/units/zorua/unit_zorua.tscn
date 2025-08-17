@@ -1,0 +1,166 @@
+[gd_scene load_steps=14 format=3 uid="uid://buv6p2q0215b7"]
+
+[ext_resource type="PackedScene" uid="uid://db4olnmg1des6" path="res://components/units/unit.tscn" id="1_35faa"]
+[ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="2_dibsa"]
+[ext_resource type="Texture2D" uid="uid://cg2j0gltde2f0" path="res://assets/images/units/unit_zorua.png" id="2_fbij7"]
+[ext_resource type="AnimationLibrary" uid="uid://j3gnofk7vx4u" path="res://resources/units/zorua/animations/unit_zorua_anims.tres" id="3_64wtc"]
+[ext_resource type="Resource" uid="uid://c3cqjyw1qh1u2" path="res://resources/elements/stats/health.tres" id="6_f31hx"]
+[ext_resource type="Resource" uid="uid://m5pgt4e0tcu1" path="res://resources/elements/blaze.tres" id="7_0qgq6"]
+[ext_resource type="Resource" uid="uid://bfcx14jds5ikg" path="res://resources/elements/shield.tres" id="7_7f8m4"]
+[ext_resource type="Resource" uid="uid://c0d5ut3wxqcer" path="res://resources/elements/stats/attack.tres" id="7_c5037"]
+[ext_resource type="PackedScene" uid="uid://vogkx4y4v3ui" path="res://components/UI/numbered_badge.tscn" id="8_7f8m4"]
+[ext_resource type="Resource" uid="uid://cf8gt6kv6pdid" path="res://resources/elements/curse.tres" id="8_bwj50"]
+[ext_resource type="Resource" uid="uid://dhrodttjiu2xw" path="res://resources/elements/tailwind.tres" id="11_7f8m4"]
+
+[sub_resource type="Animation" id="Animation_w18lx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -192)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfq5w"]
+_data = {
+&"RESET": SubResource("Animation_w18lx")
+}
+
+[node name="Zorua" instance=ExtResource("1_35faa")]
+unit_data = ExtResource("2_dibsa")
+
+[node name="Sprite" parent="UnitSprite" index="0"]
+texture = ExtResource("2_fbij7")
+
+[node name="Collision" parent="UnitSprite" index="1"]
+position = Vector2(-9, -121)
+
+[node name="AnimationPlayer" parent="UnitSprite" index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_bfq5w"),
+&"unit_zorua_anims": ExtResource("3_64wtc")
+}
+
+[node name="HUD" type="Control" parent="." index="2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -103.0
+offset_top = -196.0
+offset_right = 83.0
+offset_bottom = -37.0
+
+[node name="LeftBar" type="VBoxContainer" parent="HUD" index="0"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 92.0
+theme_override_constants/separation = 4
+
+[node name="Status3" parent="HUD/LeftBar" index="0" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("6_f31hx")
+
+[node name="StatusDefensive" type="VBoxContainer" parent="HUD/LeftBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Status" parent="HUD/LeftBar/StatusDefensive" index="0" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("7_7f8m4")
+amount = 1
+
+[node name="Status2" parent="HUD/LeftBar/StatusDefensive" index="1" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("8_bwj50")
+amount = 2
+
+[node name="RightBar" type="VBoxContainer" parent="HUD" index="1"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 68.0
+grow_horizontal = 0
+theme_override_constants/separation = 4
+
+[node name="Status4" parent="HUD/RightBar" index="0" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("7_c5037")
+
+[node name="StatusOffensive" type="VBoxContainer" parent="HUD/RightBar" index="1"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Status" parent="HUD/RightBar/StatusOffensive" index="0" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("7_0qgq6")
+
+[node name="Status2" parent="HUD/RightBar/StatusOffensive" index="1" instance=ExtResource("8_7f8m4")]
+visible = true
+layout_mode = 2
+size_flags_horizontal = 4
+attribute = ExtResource("11_7f8m4")

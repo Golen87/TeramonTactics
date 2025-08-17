@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatDefinition" load_steps=3 format=3 uid="uid://dx0lule4xp2wb"]
+
+[ext_resource type="Script" uid="uid://dmubl4aa62bim" path="res://resources/elements/stats/stat_definition.gd" id="1_cm261"]
+[ext_resource type="Texture2D" uid="uid://5hy34i3p3wq4" path="res://assets/images/icons/action.png" id="1_xo7vn"]
+
+[resource]
+script = ExtResource("1_cm261")
+type = 3
+name = "Action Points"
+description = "How many actions a unit can take in its turn."
+image = ExtResource("1_xo7vn")
+color = Color(0.93, 0.744, 0, 1)
+metadata/_custom_type_script = "uid://dmubl4aa62bim"

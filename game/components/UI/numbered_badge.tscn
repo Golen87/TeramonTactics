@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://vogkx4y4v3ui"]
+
+[ext_resource type="Script" uid="uid://d3gp1ph53ae1l" path="res://components/UI/numbered_badge.gd" id="1_ukwuc"]
+[ext_resource type="Texture2D" uid="uid://db03dk7e111no" path="res://assets/images/types/surge.png" id="2_53j28"]
+
+[node name="NumberedBadge" type="Control"]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ukwuc")
+
+[node name="Sprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 0
+size_flags_horizontal = 4
+texture = ExtResource("2_53j28")
+expand_mode = 1
+
+[node name="AmountText" type="Label" parent="Sprite"]
+unique_name_in_owner = true
+self_modulate = Color(0.113459, 0.0270573, 0.0123786, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://db4olnmg1des6"]
+
+[ext_resource type="Script" uid="uid://dbduv41dwa2ao" path="res://components/units/unit.gd" id="1_ebjxu"]
+[ext_resource type="Script" uid="uid://rbvtd1mlgavm" path="res://components/units/unit_sprite.gd" id="2_ebjxu"]
+[ext_resource type="Script" uid="uid://errbrqkjljkr" path="res://scripts/state_machine/state_machine.gd" id="4_ith4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w18lx"]
+size = Vector2(138, 168)
+
+[sub_resource type="Animation" id="Animation_w18lx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -192)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfq5w"]
+_data = {
+&"RESET": SubResource("Animation_w18lx")
+}
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_ebjxu")
+
+[node name="UnitSprite" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ebjxu")
+
+[node name="Sprite" type="Sprite2D" parent="UnitSprite"]
+unique_name_in_owner = true
+offset = Vector2(0, -192)
+hframes = 4
+vframes = 3
+
+[node name="Collision" type="CollisionShape2D" parent="UnitSprite"]
+unique_name_in_owner = true
+position = Vector2(0, -120)
+shape = SubResource("RectangleShape2D_w18lx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UnitSprite"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_bfq5w")
+}
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_ith4e")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+
+[node name="Walk" type="Node" parent="StateMachine"]
+
+[node name="Attack" type="Node" parent="StateMachine"]
+
+[connection signal="mouse_entered" from="UnitSprite" to="UnitSprite" method="_on_mouse_entered"]
