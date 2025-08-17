@@ -1,17 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgr8ftkvsnlsb"]
+[gd_scene load_steps=6 format=3 uid="uid://cgr8ftkvsnlsb"]
 
 [ext_resource type="Texture2D" uid="uid://dbyycaqaeiaen" path="res://assets/images/grid/dude.png" id="1_jqqty"]
 [ext_resource type="Script" uid="uid://bypmf2rybsrqb" path="res://scenes/grid test/dude.gd" id="1_nj1n1"]
+[ext_resource type="Texture2D" uid="uid://b0dka2hbkus3t" path="res://assets/images/circle.png" id="2_ifhos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk1tc"]
 atlas = ExtResource("1_jqqty")
 
-[node name="Dude" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nj1n1"]
+radius = 33.0
+height = 134.0
+
+[node name="Dude" type="Area2D"]
 script = ExtResource("1_nj1n1")
+
+[node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.34902)
+position = Vector2(0, -1)
+scale = Vector2(0.125, 0.046875)
+texture = ExtResource("2_ifhos")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -60)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_lk1tc")
-hframes = 3
+hframes = 4
 vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -57)
+shape = SubResource("CapsuleShape2D_nj1n1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
