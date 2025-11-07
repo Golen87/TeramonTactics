@@ -23,7 +23,7 @@ func _ready() -> void:
 	set_state(DudeState.IDLE)
 
 func _process(_delta: float) -> void:
-	if randf() < 0.001:
+	if state == DudeState.IDLE and randf() < 0.001:
 		face_random_direction()
 
 
@@ -41,6 +41,13 @@ func get_facing_direction(dir: Vector2) -> Vector2i:
 	if sign(dir.y) > 0:
 		return Vector2i(1, 0) if sign(dir.x) > 0 else Vector2i(0, 1)
 	return Vector2i(0, -1) if sign(dir.x) > 0 else Vector2i(-1, 0)
+
+func move_along_path(path: Array[Vector2]):
+	for cell in path.slice(1):
+		move(cell)
+		# TODO: Improve on this hack. Probably make a long tween chain instead.
+		await get_tree().create_timer(0.8).timeout
+	# TODO: Add signal here. Finished walking along path.
 
 func move(new_position: Vector2):
 	facing = get_facing_direction(new_position - position)

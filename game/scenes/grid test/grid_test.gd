@@ -8,6 +8,10 @@ class_name Grid extends Node2D
 const dudeRef = preload("res://scenes/grid test/dude.tscn")
 var dudes: Array[Dude] = []
 
+# { cell_coord: [prev_coord, distance], ... }
+var walkable_cells: Dictionary = {}
+
+
 func _ready() -> void:
 	const dude_count = 15
 	var cells = tilemap.get_used_cells()
@@ -32,31 +36,52 @@ func _ready() -> void:
 func get_available_cells(cell: Vector2i) -> Array[Vector2i]:
 	return tilemap.get_surrounding_cells(cell).filter(is_empty)
 
-# Finds all available cells within max_moves number of steps
-func get_reachable_cells(start: Vector2i, max_moves: int) -> Array[Vector2i]:
-	var frontier: Array[Vector2i] = [start]
-	var visited: = { start: 0 }  # Dictionary: cell -> distance
-	var result: Array[Vector2i] = []
+class NavCell:
+	var cell: Vector2i
+	var previous: Vector2i
+	var distance: int
 
-	while not frontier.is_empty():
-		var current = frontier.pop_front()
-		var dist = visited[current]
+	func _init(_cell, _previous, _distance):
+		cell = _cell
+		previous = _previous
+		distance = _distance
+
+# Finds all available cells within max_moves number of steps
+func calculate_walkable_cells(start: Vector2i, max_moves: int):
+	var queue: Array[Vector2i] = [start]
+	walkable_cells = { start: [null, 0] }
+
+	while not queue.is_empty():
+		var current = queue.pop_front()
+		var distance = walkable_cells[current][1]
+
+		for neighbor in tilemap.get_surrounding_cells(current):
+			if neighbor not in walkable_cells and is_monster(neighbor):
+				walkable_cells[neighbor] = [current, distance + 1]
 
 		# Skip checking if max_moves reached
-		if dist >= max_moves:
+		if distance >= max_moves:
 			continue
 
 		# Check cell neighbors
 		for neighbor in get_available_cells(current):
-			if neighbor not in visited:
-				visited[neighbor] = dist + 1
-				frontier.append(neighbor)
-				result.append(neighbor)
+			if neighbor not in walkable_cells:
+				queue.append(neighbor)
+				walkable_cells[neighbor] = [current, distance + 1]
 
-	return result
+# Returns a list of cells that leads to the goal cell
+func get_walkable_path(goal_cell):
+	var path = [goal_cell]
+	var cell = walkable_cells[goal_cell][0]
+	while cell:
+		path.append(cell)
+		cell = walkable_cells[cell][0]
+	path.reverse()
+	return path
 
 func clear_selection():
 	tilemap_highlight.clear()
+	walkable_cells = {}
 	for dude in dudes:
 		dude.selected = false
 
@@ -65,10 +90,16 @@ func on_monster_clicked(dude: Dude) -> void:
 	dude.selected = true
 
 	# Show cells that can be moved to
-	var MOVE_DISTANCE = 3 # Replace with monster.action_points
-	var available_cells = get_reachable_cells(dude.cell, MOVE_DISTANCE)
-	for cell in available_cells:
-		tilemap_highlight.set_cell(cell, 0, Vector2i(0, 0))
+	var MOVE_DISTANCE = 4 # Replace with monster.action_points
+	calculate_walkable_cells(dude.cell, MOVE_DISTANCE)
+
+	for cell in walkable_cells:
+		if cell == dude.cell:
+			tilemap_highlight.set_cell(cell, 0, Vector2i(3, 0))
+		elif get_monster(cell):
+			tilemap_highlight.set_cell(cell, 0, Vector2i(2, 0))
+		else:
+			tilemap_highlight.set_cell(cell, 0, Vector2i(0, 0))
 
 func is_empty(cell: Vector2i) -> bool:
 	if tilemap.get_cell_tile_data(cell):
@@ -76,6 +107,13 @@ func is_empty(cell: Vector2i) -> bool:
 			if dude.cell == cell:
 				return false
 		return true
+	return false
+
+func is_monster(cell: Vector2i) -> bool:
+	if tilemap.get_cell_tile_data(cell):
+		for dude in dudes:
+			if dude.cell == cell:
+				return true
 	return false
 
 func get_monster(cell: Vector2i) -> Dude:
@@ -106,20 +144,30 @@ func _input(event: InputEvent) -> void:
 		if tile_data:
 			select_tile(cell)
 		else:
-			tilemap_highlight.clear()
+			clear_selection()
+
+func get_selected_dude() -> Dude:
+	for dude in dudes:
+		if dude.selected:
+			return dude
+	return null
 
 func select_tile(cell: Vector2i):
 	prints("Tile clicked!", cell)
 
 	# Clicked on highlighted tile. Move selected dude.
-	if tilemap_highlight.get_cell_tile_data(cell):
-		tilemap_highlight.clear()
-		for dude in dudes:
-			if dude.selected:
-				dude.cell = cell
-				dude.move(cell_to_world(cell))
-				break
+	if walkable_cells.has(cell):
+		var dude = get_selected_dude()
+		if dude:
+			var path: Array[Vector2] = []
+			for path_cell in get_walkable_path(cell):
+				path.append(cell_to_world(path_cell))
+			dude.move_along_path(path)
+
+			dude.cell = cell
+
+			clear_selection()
 	# Highlight tile
 	else:
-		tilemap_highlight.clear()
+		clear_selection()
 		tilemap_highlight.set_cell(cell, 0, Vector2i(Vector2i(1, 0)))
