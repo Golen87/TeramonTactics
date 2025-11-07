@@ -12,5 +12,5 @@ name = "Curse"
 description = "Stacks of Curse double damage taken from all sources, ticks down after taking damage."
 image = ExtResource("1_7o7yr")
 color = Color(0.376471, 0.435294, 0.729412, 1)
-is_buff = 1
+is_offensive = false
 metadata/_custom_type_script = "uid://caek4h8ojig5g"

@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://buv6p2q0215b7"]
+[gd_scene load_steps=7 format=3 uid="uid://buv6p2q0215b7"]
 
 [ext_resource type="PackedScene" uid="uid://db4olnmg1des6" path="res://components/units/unit.tscn" id="1_35faa"]
 [ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="2_dibsa"]
 [ext_resource type="Texture2D" uid="uid://cg2j0gltde2f0" path="res://assets/images/units/unit_zorua.png" id="2_fbij7"]
 [ext_resource type="AnimationLibrary" uid="uid://j3gnofk7vx4u" path="res://resources/units/zorua/animations/unit_zorua_anims.tres" id="3_64wtc"]
-[ext_resource type="Texture2D" uid="uid://ccjeyhp05ieph" path="res://assets/images/types/curse.png" id="7_bwj50"]
-[ext_resource type="Script" uid="uid://caek4h8ojig5g" path="res://resources/elements/element_definition.gd" id="8_4j3wn"]
-[ext_resource type="Texture2D" uid="uid://cyahnq2snuide" path="res://assets/images/types/blaze.png" id="10_2nhpf"]
 
 [sub_resource type="Animation" id="Animation_w18lx"]
 length = 0.001
@@ -76,30 +73,6 @@ _data = {
 &"RESET": SubResource("Animation_w18lx")
 }
 
-[sub_resource type="Resource" id="Resource_xifd5"]
-resource_local_to_scene = true
-resource_name = "Curse"
-script = ExtResource("8_4j3wn")
-type = 2
-name = "Curse"
-description = "Stacks of Curse double damage taken from all sources, ticks down after taking damage."
-image = ExtResource("7_bwj50")
-color = Color(0.376471, 0.435294, 0.729412, 1)
-is_offensive = false
-metadata/_custom_type_script = "uid://caek4h8ojig5g"
-
-[sub_resource type="Resource" id="Resource_0qgq6"]
-resource_local_to_scene = true
-resource_name = "Blaze"
-script = ExtResource("8_4j3wn")
-type = 1
-name = "Blaze"
-description = "Stacks of Blaze on a unit are added to its attack power, clears after triggering."
-image = ExtResource("10_2nhpf")
-color = Color(0.980392, 0.647059, 0.333333, 1)
-is_offensive = false
-metadata/_custom_type_script = "uid://caek4h8ojig5g"
-
 [node name="Zorua" instance=ExtResource("1_35faa")]
 unit_data = ExtResource("2_dibsa")
 
@@ -117,9 +90,3 @@ libraries = {
 
 [node name="HUD" parent="." index="2"]
 offset_bottom = -29.0
-
-[node name="Status2" parent="HUD/LeftBar/StatusBarDefensive" index="1"]
-attribute = SubResource("Resource_xifd5")
-
-[node name="Status" parent="HUD/RightBar/StatusBarOffensive" index="0"]
-attribute = SubResource("Resource_0qgq6")

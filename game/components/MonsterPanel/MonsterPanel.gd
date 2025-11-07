@@ -22,7 +22,7 @@ extends Node
 @onready var attack_label: Label = $AttackLabel
 @onready var speed_label: Label = $SpeedLabel
 @onready var action_label: Label = $ActionLabel
-@onready var frenzy_label: Label = $FrenzyLabel
+@onready var fury_label: Label = $FuryLabel
 @onready var offensive_effect_label: Label = $OffensiveEffectLabel
 @onready var defensive_effect_label: Label = $DefensiveEffectLabel
 
@@ -36,7 +36,7 @@ func _on_monster_changed():
 		attack_label.text = str(monster_definition.attack)
 		speed_label.text = str(monster_definition.speed)
 		action_label.text = str(monster_definition.action_points)
-		frenzy_label.text = str(monster_definition.fury)
+		fury_label.text = str(monster_definition.fury)
 		offensive_effect_label.text = monster_definition.offensive_description
 		defensive_effect_label.text = monster_definition.defensive_description
 
