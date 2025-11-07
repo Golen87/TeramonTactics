@@ -4,6 +4,7 @@ class_name Grid extends Node2D
 
 @onready var tilemap: TileMapLayer = $TileMapLayer
 @onready var tilemap_highlight = $TileMapHighlight
+@onready var camera: Camera2D = $Camera2D
 
 const dudeRef = preload("res://scenes/grid test/dude.tscn")
 var dudes: Array[Dude] = []
@@ -85,9 +86,18 @@ func clear_selection():
 	for dude in dudes:
 		dude.selected = false
 
+func move_camera_to(target_position: Vector2) -> void:
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "global_position", target_position, 1.0)
+
 func on_monster_clicked(dude: Dude) -> void:
 	clear_selection()
 	dude.selected = true
+
+	# Center camera on selected dude
+	move_camera_to(dude.global_position)
 
 	# Show cells that can be moved to
 	var MOVE_DISTANCE = 4 # Replace with monster.action_points
@@ -138,7 +148,14 @@ func cell_to_world(cell: Vector2i) -> Vector2:
 func _input(event: InputEvent) -> void:
 	event = event as InputEventMouseButton
 	if event and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var local_pos = to_local(event.position)
+		# Get mouse position in viewport coordinates and convert to world space through camera
+		var viewport = get_viewport()
+		var camera = viewport.get_camera_2d()
+		var mouse_pos = viewport.get_mouse_position()
+		var world_pos = (mouse_pos - viewport.get_visible_rect().size * 0.5) / camera.zoom + camera.global_position
+
+		# Convert world position to local tilemap coordinates
+		var local_pos = tilemap.to_local(world_pos)
 		var cell = tilemap.local_to_map(local_pos)
 		var tile_data = tilemap.get_cell_tile_data(cell)
 		if tile_data:
@@ -163,6 +180,9 @@ func select_tile(cell: Vector2i):
 			for path_cell in get_walkable_path(cell):
 				path.append(cell_to_world(path_cell))
 			dude.move_along_path(path)
+
+			# Move camera to final destination
+			# move_camera_to(path[-1])
 
 			dude.cell = cell
 
