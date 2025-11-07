@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://yb0031ognjr"]
+
+[ext_resource type="Script" uid="uid://bno5hctr888ot" path="res://scenes/animations/animations_scene.gd" id="1_cguwc"]
+[ext_resource type="Resource" uid="uid://b7w7bwm41si2u" path="res://resources/monsters/first_monster.tres" id="2_wicfy"]
+[ext_resource type="PackedScene" uid="uid://rvpp31tnowv6" path="res://components/Back button/BackButton.tscn" id="3_kjmtm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cguwc")
+md = ExtResource("2_wicfy")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="BackButton" parent="." instance=ExtResource("3_kjmtm")]
+offset_left = 46.0
+offset_top = 613.0
+offset_right = 46.0
+offset_bottom = 613.0
